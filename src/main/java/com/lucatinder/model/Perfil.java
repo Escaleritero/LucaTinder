@@ -28,6 +28,4 @@ public class Perfil {
 		return fecha_de_nacimiento;
 	}
 	
-	
-	
 }
