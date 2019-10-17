@@ -1,2 +1,0 @@
-INDEX VERSION 1.131+C:\Users\admin\Desktop\LucaTinder\.metadata\.plugins\org.eclipse.jdt.core
-761154231.index
