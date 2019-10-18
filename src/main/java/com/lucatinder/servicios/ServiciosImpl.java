@@ -21,12 +21,22 @@ public class ServiciosImpl  implements IServicios{
 	public Perfil addPerfil(Perfil perfil) {
 		int validar = 0;
 		validar = iPerfilRepositorio.validarPerfil(perfil.getAlias());
-		
 		if(validar != 0) {
 			iPerfilRepositorio.save(perfil);
 			return perfil;
 		}else {
 			return null;
 		}
+	}
+
+	
+	@Override
+	public Perfil validarPerfil(String alias) {
+		int validar = 0;
+		validar = iPerfilRepositorio.validarPerfil(alias);
+		if(validar!=0) {
+			
+		}
+		return null;
 	}
 }
