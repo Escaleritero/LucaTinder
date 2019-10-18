@@ -13,9 +13,9 @@
 </div>
                <br/>
                <div align=center>
-                   <form class="formulario" method="post" th:object="${alias}" th:action="@{/principal}">  
+                   <form class="formulario" method="post" th:object="${perfil}" th:action="@{/sesion}">  
                        <p align=left class="texto-intermedio">Entrar</p>
-                   <p align=left class="texto-bajo">Alias: <input th:field="*{nombre}"type="text" name="nombre" size="40" required="required" ></p>
+                   <p align=left class="texto-bajo">Alias: <input th:field="*{alias}"type="text" name="nombre" size="40" required="required" ></p>
                                      
                                                       <input type="submit" align=center class="boton-general" value="Iniciar-sesión">
                    <br/>
