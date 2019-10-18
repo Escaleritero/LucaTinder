@@ -6,7 +6,7 @@ import com.lucatinder.model.Perfil;
 
 public interface IServicios {
 
-	public String addPerfil (Perfil perfil); 	
+	public Perfil addPerfil (Perfil perfil); 	
 	public List<Perfil>listaPerfiles(String alias);
 	public Perfil validarPerfil(String alias);
 
