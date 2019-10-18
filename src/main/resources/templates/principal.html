@@ -11,8 +11,14 @@
 <body id="main">
 <div align=center id="barra-superior">
    <h1 id="titulo">  Lucatinder <img src="https://cdn.icon-icons.com/icons2/935/PNG/64/like-heart-outline-symbol_icon-icons.com_73226.png"></h1>
+   <p class="texto-intermedio-blanco" align=right><span th:inline="text">[[${alias}]]</span></p>
 </div>
                <br/>
+               
+                         <div id="ficha" class="col-12 col-sm-6 col-lg-4">   
+                         <img class="collage" src="http://assets.stickpng.com/thumbs/585e4beacb11b227491c3399.png" width=200 height=200> <div><span th:inline="text">[[${alias}]]</span><br/><span th:inline="text">[[${edad}]]</span>
+                         <span class="texto-bajo" th:inline="text">[[${edad}]]</span></div></div>
+                         
                <div align=center>
                    <form class="formulario2" method="post" th:object="${perfil}" th:action="@{/addperfil}">  
                        <p align=left class="texto-intermedio">Datos de perfil</p>
