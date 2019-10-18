@@ -24,7 +24,6 @@ public class ServiciosImpl  implements IServicios{
 	public Perfil addPerfil(Perfil perfil) {
 		int validar = 0;
 		validar = iPerfilRepositorio.validarPerfil(perfil.getAlias());
-		
 		if(validar != 0) {
 			iPerfilRepositorio.save(perfil);
 			return perfil;
@@ -32,11 +31,21 @@ public class ServiciosImpl  implements IServicios{
 			return null;
 		}
 	}
-
+	
 	@Override
-	public List<Perfil> listaPerfiles(String alias) {
+	public Perfil validarPerfil(String alias) {
+		int validar = 0;
+		validar = iPerfilRepositorio.validarPerfil(alias);
+		if(validar!=0) {
+			return iPerfilRepositorio.obtenerPerfil(alias);
+		}else {
+			return null;
+		}
+	}
+	@Override
+	public List<Perfil> listaPerfiles(int id_perfil) {
 		List<Perfil> listaPerfil;
-		listaPerfil = iPerfilRepositorio.listaPerfilId();
+		listaPerfil = iPerfilRepositorio.listaPerfilId(id_perfil);
 		
 		if(listaPerfil.size()>=20) {
 			return listaPerfil;
@@ -48,9 +57,4 @@ public class ServiciosImpl  implements IServicios{
 		return null;
 	}
 
-	@Override
-	public Perfil validarPerfil(String alias) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
