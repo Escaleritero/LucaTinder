@@ -1,31 +1,30 @@
 package com.lucatinder.model;
 
-import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
-@Entity
+
+
 public class Perfil {
 
-	@Id
-	@GeneratedValue
-	@Column (name = "id_perfiles")
+
+	@Override
+	public String toString() {
+		return "Perfil [id=" + id + ", alias=" + alias + ", nombre=" + nombre + ", descripcion=" + descripcion
+				+ ", genero=" + genero + ", edad=" + edad + "]\n";
+	}
 	//@ManyToOne/OneToMany/JoinColumn...??
 	private int id;
 	private String alias, nombre, descripcion;
 	private boolean genero;
-	private Date fecha_de_nacimiento;		
+	private int edad;		
 	
-	public Perfil(int id, String alias, String nombre, String descripcion, boolean genero, Date fecha_de_nacimiento) {
+	public Perfil(int id, String alias, String nombre, String descripcion, boolean genero, int edad) {
 		super();
 		this.id = id;
 		this.alias = alias;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.genero = genero;
-		this.fecha_de_nacimiento = fecha_de_nacimiento;
+		this.edad = edad;
 	}
 	
 	public Perfil() {
@@ -53,8 +52,8 @@ public class Perfil {
 		this.genero = genero;
 	}
 
-	public void setFecha_de_nacimiento(Date fecha_de_nacimiento) {
-		this.fecha_de_nacimiento = fecha_de_nacimiento;
+	public void setEdad(int edad) {
+		this.edad = edad;
 	}
 
 	public int getId() {
@@ -72,8 +71,8 @@ public class Perfil {
 	public boolean isGenero() {
 		return genero;
 	}
-	public Date getFecha_de_nacimiento() {
-		return fecha_de_nacimiento;
+	public int getEdad() {
+		return edad;
 	}
 	
 }
