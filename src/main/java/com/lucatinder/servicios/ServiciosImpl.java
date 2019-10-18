@@ -38,8 +38,9 @@ public class ServiciosImpl  implements IServicios{
 		validar = iPerfilRepositorio.validarPerfil(alias);
 		if(validar!=0) {
 			return iPerfilRepositorio.obtenerPerfil(alias);
+		}else {
+			return null;
 		}
-		return null;
 	}
 	@Override
 	public List<Perfil> listaPerfiles(int id_perfil) {
