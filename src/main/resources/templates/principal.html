@@ -1,44 +1,49 @@
 <!DOCTYPE html>
 <html lang=es xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Web Luca TIC</title>
-     <!-- CSS esto debe estar en la carpeta "resources" del proyecto-->
-  <!-- <link rel="stylesheet" th:href="@{/css/estilo.css}"> -->   
-<link rel="stylesheet" href="c:\css\estilo.css">
+    <!-- CSS esto debe estar en la carpeta "resources" del proyecto-->
+    <!-- <link rel="stylesheet" th:href="@{/css/estilo.css}"> -->
+    <link rel="stylesheet" href="c:\css\estilo.css">
+    <link rel="stylesheet" href="c:\css\bootstrap-grid-editado.css">
 
 </head>
+
 <body id="main">
-<div align=center id="barra-superior">
-   <h1 id="titulo">  Lucatinder <img src="https://cdn.icon-icons.com/icons2/935/PNG/64/like-heart-outline-symbol_icon-icons.com_73226.png"></h1>
-   <p class="texto-intermedio-blanco" align=right><span th:inline="text">[[${alias}]]</span></p>
+    <div align=center id="barra-superior">
+        <h1 id="titulo"> Lucatinder <img src="https://cdn.icon-icons.com/icons2/935/PNG/64/like-heart-outline-symbol_icon-icons.com_73226.png"></h1>
+        <p class="texto-intermedio-blanco" align=right><span th:inline="text">[[${alias}]]</span></p>
+    </div>
+    <br />
+
+  
+   
+    <div id="ficha" >
+        <div align=center><img align=center class="collage" src="http://assets.stickpng.com/thumbs/585e4beacb11b227491c3399.png" width=300 height=300></div>
+        <br/>
+        <div align=center><span th:inline="text">[[${alias}]]</span><br /><span th:inline="text">[[${edad}]]</span><br>
+            <span class="texto-bajo" th:inline="text">[[${descripcion}]]</span></div>
+
+        <div align=center id="botones">
+            <div id="dislike" align=left><a title="dislike" href="@{/descartes}"><img width=90 height=90 src="https://www.freeiconspng.com/uploads/cancel-close-button-png-11.png" alt="cruz" /></a>
+            </div>
+            <div id="like" align=right>
+                <a title="dislike" align=right href="@{/contactos}"><img width=90 height=90 src="https://greenlifeisgood.com/wp-content/uploads/2018/07/12936-green-heart.png" alt="corazon" /></a>
+            </div>
+        </div>
+   
+    
+
+
+
+
+
+
+
 </div>
-               <br/>
-               
-                         <div id="ficha" class="col-12 col-sm-6 col-lg-4">   
-                         <img class="collage" src="http://assets.stickpng.com/thumbs/585e4beacb11b227491c3399.png" width=200 height=200> <div><span th:inline="text">[[${alias}]]</span><br/><span th:inline="text">[[${edad}]]</span>
-                         <span class="texto-bajo" th:inline="text">[[${edad}]]</span></div></div>
-                         
-               <div align=center>
-                   <form class="formulario2" method="post" th:object="${perfil}" th:action="@{/addperfil}">  
-                       <p align=left class="texto-intermedio">Datos de perfil</p>
-                   <p align=center class="texto-bajo">Alias: <input th:field="*{alias}"type="text" name="nombre" size="27" required="required" ></p>
-                                    
-                    <p align=center class="texto-bajo">Nombre completo: <input th:field="*{nombre}"type="text" name="nombre" size="40" required="required" ></p>
-                                     <p class="texto-bajo">Sexo: 
-    <input th:field="*{genero}" type="radio" name="hm" value="true" required="required" class="texto-bajo"> Hombre
-    <input th:field="*{genero}" type="radio" name="hm" value="false" required="required" class="texto-bajo"> Mujer
-                                   
-        <p align=center class="texto-bajo">Fecha de nacimiento : <input th:field="*{fecha_de_nacimiento}" type="date" name="nombre" size="15" required="required" ></p>
-                                   
-                       <p align=center class="texto-bajo">Cuenta algo sobre ti: </p><textarea style="resize: none;"
- th:field="*{descripcion}"type="text" name="nombre" rows="4" cols="50" required="required" ></textarea>
-                                   
-                                   <br/>
-                                   
-                    <input type="submit" align=center class="boton-general" value="Alta de perfil">
-                   <br/>
-                                          
-                                    
-               </div>        
+
+
+
 </body>
