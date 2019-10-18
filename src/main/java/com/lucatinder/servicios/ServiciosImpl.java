@@ -10,11 +10,23 @@ import com.lucatinder.model.Perfil;
 public class ServiciosImpl  implements IServicios{
 	@Autowired
 	IPerfilRepositorio iPerfilRepositorio;
-	
+
+	/**
+	 * Metodo que le pasa un objeto para mandarlo a la base de datos.
+	 * 
+	 * @param perfil: objeto de la clase Perfil
+	 * @return retorna un objeto o en caso de fallo un null
+	 */
 	@Override
 	public Perfil addPerfil(Perfil perfil) {
+		int validar = 0;
+		validar = iPerfilRepositorio.validarPerfil(perfil.getAlias());
 		
-		return null;
+		if(validar != 0) {
+			iPerfilRepositorio.save(perfil);
+			return perfil;
+		}else {
+			return null;
+		}
 	}
-	
 }
