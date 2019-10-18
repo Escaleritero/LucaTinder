@@ -13,35 +13,23 @@ public class ServiciosImpl  implements IServicios{
 	
 	@Autowired
 	IPerfilRepositorio iPerfilRepositorio;
-	
-	List aux=iPerfilRepositorio.
-	
-	@Override
-	public String addPerfil(Perfil perfil) {		
-		return null;
-	}
 
-	
-	public Perfil validarPerfil (String alias){
-		return null;
-		//Descomentar cuando el método validarPerfil esté creado
-		//return iPerfilRepositorio.validarPerfil( String alias);
-		}
-
-	
-	
+	/**
+	 * Metodo que le pasa un objeto para mandarlo a la base de datos.
+	 * 
+	 * @param perfil: objeto de la clase Perfil
+	 * @return retorna un objeto o en caso de fallo un null
+	 */
 	@Override
-	public List<Perfil> listaPerfiles(String alias) {
+	public Perfil addPerfil(Perfil perfil) {
+		int validar = 0;
+		validar = iPerfilRepositorio.validarPerfil(perfil.getAlias());
 		
-		if() 
-		{
-			//Si hay 20 perfiles
-			return iPerfilRepositorio.listaPerfiles();
-			
+		if(validar != 0) {
+			iPerfilRepositorio.save(perfil);
+			return perfil;
+		}else {
+			return null;
 		}
-		else {
-			//
-		}
-		return utilidades.generadorDePerfil();
 	}
 }
