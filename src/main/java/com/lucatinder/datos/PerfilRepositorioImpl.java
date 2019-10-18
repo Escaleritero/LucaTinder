@@ -10,7 +10,7 @@ public class PerfilRepositorioImpl implements PerfilRepositorioCustom {
 	EntityManager em;
 	
 	@Override
-	public int validador(String alias) {
+	public int validarPerfil(String alias) {
 		String sql = "SELECT * FROM perfiles WHERE upper(alias)like(\""+alias+"\")";
 		Query q = em.createNativeQuery(sql);
 		return q.getFirstResult();
