@@ -12,7 +12,7 @@ public class ServiciosImpl  implements IServicios{
 	IPerfilRepositorio iPerfilRepositorio;
 	
 	@Override
-	public String addPerfil(Perfil perfil) {
+	public Perfil addPerfil(Perfil perfil) {
 		
 		return null;
 	}
