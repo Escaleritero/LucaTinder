@@ -37,14 +37,14 @@ public class ServiciosImpl  implements IServicios{
 		int validar = 0;
 		validar = iPerfilRepositorio.validarPerfil(alias);
 		if(validar!=0) {
-			
+			return iPerfilRepositorio.obtenerPerfil(alias);
 		}
 		return null;
-
+	}
 	@Override
-	public List<Perfil> listaPerfiles(String alias) {
+	public List<Perfil> listaPerfiles(int id_perfil) {
 		List<Perfil> listaPerfil;
-		listaPerfil = iPerfilRepositorio.listaPerfilId();
+		listaPerfil = iPerfilRepositorio.listaPerfilId(id_perfil);
 		
 		if(listaPerfil.size()>=20) {
 			return listaPerfil;
