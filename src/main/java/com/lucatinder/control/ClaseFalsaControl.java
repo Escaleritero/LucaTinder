@@ -1,5 +1,5 @@
 package com.lucatinder.control;
 
-public class GGG {
+public class ClaseFalsaControl {
 
 }

@@ -1,5 +1,7 @@
 package com.lucatinder.servicios;
 
+import java.util.List;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +10,7 @@ import com.lucatinder.model.Perfil;
 
 @Service
 public class ServiciosImpl  implements IServicios{
+	
 	@Autowired
 	IPerfilRepositorio iPerfilRepositorio;
 
@@ -28,7 +31,6 @@ public class ServiciosImpl  implements IServicios{
 			return null;
 		}
 	}
-
 	
 	@Override
 	public Perfil validarPerfil(String alias) {
@@ -38,5 +40,20 @@ public class ServiciosImpl  implements IServicios{
 			
 		}
 		return null;
+
+	@Override
+	public List<Perfil> listaPerfiles(String alias) {
+		List<Perfil> listaPerfil;
+		listaPerfil = iPerfilRepositorio.listaPerfilId();
+		
+		if(listaPerfil.size()>=20) {
+			return listaPerfil;
+		}
+		else {			
+			//generadorDePerfil(); --> Método que se está creando en utilidades
+			//Descomentar esta línea cuando esté hecho
+		}
+		return null;
 	}
+
 }
