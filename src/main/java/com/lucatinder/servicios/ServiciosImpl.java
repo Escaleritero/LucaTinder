@@ -32,4 +32,25 @@ public class ServiciosImpl  implements IServicios{
 			return null;
 		}
 	}
+
+	@Override
+	public List<Perfil> listaPerfiles(String alias) {
+		List<Perfil> listaPerfil;
+		listaPerfil = iPerfilRepositorio.listaPerfilId();
+		
+		if(listaPerfil.size()>=20) {
+			return listaPerfil;
+		}
+		else {			
+			//generadorDePerfil(); --> Método que se está creando en utilidades
+			//Descomentar esta línea cuando esté hecho
+		}
+		return null;
+	}
+
+	@Override
+	public Perfil validarPerfil(String alias) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
