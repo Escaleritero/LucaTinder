@@ -1,8 +1,5 @@
 package com.lucatinder.model;
 
-
-
-
 public class Perfil {
 
 
