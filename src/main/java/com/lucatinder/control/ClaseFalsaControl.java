@@ -10,9 +10,9 @@ public class ClaseFalsaControl {
 
 	//Faltan datos. Mirar post-it 4.1
 	@GetMapping("/principal")
-	public String principal(Model model) {
+	public String principal(Model model, Perfil perfil) {
 				
-		Perfil perfil;
+		//Perfil perfil;
 		model.addAttribute("perfil", perfil);
 		return "principal";
 	}
