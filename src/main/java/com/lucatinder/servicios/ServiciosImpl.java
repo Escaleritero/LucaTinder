@@ -12,7 +12,7 @@ import com.lucatinder.model.Perfil;
 public class ServiciosImpl  implements IServicios{
 	
 	@Autowired
-	IPerfilRepositorio iPerfilRepositorio;
+	private IPerfilRepositorio iPerfilRepositorio;
 
 	/**
 	 * Metodo que le pasa un objeto para mandarlo a la base de datos.

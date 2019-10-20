@@ -13,7 +13,7 @@
 </div>
                <br/>
                <div align=center>
-                   <form class="formulario" method="post" th:object="${perfil}" th:action="@{/sesion}">  
+                   <form class="formulario" method="post" th:object="${perfil}" th:action="@{/login}">  
                        <p align=left class="texto-intermedio">Entrar</p>
                    <p align=left class="texto-bajo">Alias: <input th:field="*{alias}"type="text" name="nombre" size="40" required="required" ></p>
                                      
@@ -21,7 +21,7 @@
                    <br/>
                    </form>
                    <br/>
-                  <form class="formulario" method="post"  th:action="@{/registro}">  
+                  <form class="formulario" method="post"  th:action="@{/registro}"> <!-- aca deberia ser metodo "get" NO post -->
                   
                    <p align=left class="texto-intermedio">¿No tienes cuenta?</p>
                    

@@ -6,8 +6,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import com.lucatinder.model.Perfil;
+import org.springframework.stereotype.Repository;
 
+import com.lucatinder.model.Perfil;
 
 public class PerfilRepositorioImpl implements PerfilRepositorioCustom {
 
@@ -32,7 +33,6 @@ public class PerfilRepositorioImpl implements PerfilRepositorioCustom {
 	public Perfil obtenerPerfil(String alias) {
 		String sql = "SELECT * FROM perfiles WHERE id_perfil =(\""+alias+"\")";
 		Query q = em.createNativeQuery(sql);
-		
 		return (Perfil)q.getSingleResult() ;
 	}
 }

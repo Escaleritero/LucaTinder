@@ -14,7 +14,7 @@
 </div>
                <br/>
                <div align=center>
-                   <form class="formulario2" method="post" th:object="${perfil}" th:action="@{/addperfil}">  
+                   <form class="formulario2" method="post" th:object="${perfil}" th:action="@{/registro}">  
                        <p align=left class="texto-intermedio">Datos de perfil</p>
                    <p align=center class="texto-bajo">Alias: <input th:field="*{alias}"type="text" name="nombre" size="27" required="required" ></p>
                                     
@@ -26,7 +26,7 @@
         <p align=center class="texto-bajo">Fecha de nacimiento : <input th:field="*{fecha_de_nacimiento}" type="date" name="nombre" size="15" required="required" ></p>
                                    
                        <p align=center class="texto-bajo">Cuenta algo sobre ti: </p><textarea style="resize: none;"
- th:field="*{descripcion}"type="text" name="nombre" rows="4" cols="50" required="required" ></textarea>
+ 						th:field="*{descripcion}"type="text" name="nombre" rows="4" cols="50" required="required" ></textarea>
                                    
                                    <br/>
                                    
