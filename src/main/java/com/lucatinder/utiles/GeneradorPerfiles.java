@@ -1,4 +1,4 @@
-package com.licatinder.utiles;
+package com.lucatinder.utiles;
 
 public class GeneradorPerfiles {
 

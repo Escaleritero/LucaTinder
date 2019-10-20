@@ -2,7 +2,10 @@ package com.lucatinder.servicios;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.lucatinder.model.Perfil;
+
 
 public interface IServicios {
 
