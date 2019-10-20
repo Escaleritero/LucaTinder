@@ -10,7 +10,7 @@ import com.lucatinder.model.Perfil;
 
 
 public class PerfilRepositorioImpl implements PerfilRepositorioCustom {
-
+/*
 	@PersistenceContext
 	EntityManager em;
 	
@@ -35,4 +35,5 @@ public class PerfilRepositorioImpl implements PerfilRepositorioCustom {
 		
 		return (Perfil)q.getSingleResult() ;
 	}
+	*/
 }

@@ -1,34 +1,34 @@
 <!DOCTYPE html>
-<html lang=es xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Web Luca TIC</title>
-    <!-- CSS -->
-	<link rel="stylesheet" th:href="@{/css/estilo.css}">
-</head>
-
-<body id="main">
-	<div align=center id="barra-superior">
-	   <h1 id="titulo">  Lucatinder <img src="https://cdn.icon-icons.com/icons2/935/PNG/64/like-heart-outline-symbol_icon-icons.com_73226.png"></h1>
-	</div>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Web Luca TIC</title>
+	    <!-- CSS -->
+		<link rel="stylesheet" th:href="@{/css/estilo.css}">
+	</head>
 	
-    <br/>
-    
-    <div align=center>
-	    <form class="formulario" method="post" th:object="${alias}" th:action="@{/principal}">  
-	        <p align=left class="texto-intermedio">Entrar</p>
-		    <p align=left class="texto-bajo">Alias: <input th:field="*{}"type="text" name="nombre" size="40" required="required" ></p>
-		    <input type="submit" align=center class="boton-general" value="Iniciar-sesión">
-		    <br/>
-	    </form>
+	<body id="main">
+		<div align=center id="barra-superior">
+		   <h1 id="titulo">  Lucatinder <img src="https://cdn.icon-icons.com/icons2/935/PNG/64/like-heart-outline-symbol_icon-icons.com_73226.png"></h1>
+		</div>
+		
+	    <br/>
 	    
-        <br/>
-        
-        <form class="formulario" method="post"  th:action="@{/registro}">  
-        	<p align=left class="texto-intermedio">¿No tienes cuenta?</p>
-	        <input type="submit" align=center class="boton-general" value="Registro">
+	    <div align=center>
+		    <form class="formulario" method="post" th:object="${Perfil}" th:action="@{/principal}">  
+		        <p align=left class="texto-intermedio">Entrar</p>
+			    <p align=left class="texto-bajo">Alias: <input th:field="*{alias}" type="text" name="alias" size="40" required="required" ></p>
+			    <input type="submit" align=center class="boton-general" value="Iniciar-sesión">
+			    <br/>
+		    </form>
+		    
 	        <br/>
-        </form>
-	</div>
-</body>
+	        
+	        <form class="formulario" method="post"  th:action="@{/registro}">  
+	        	<p align=left class="texto-intermedio">¿No tienes cuenta?</p>
+		        <input type="submit" align=center class="boton-general" value="Registro">
+		        <br/>
+	        </form>
+		</div>
+	</body>
 </html>
