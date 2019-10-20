@@ -1,4 +1,4 @@
-package com.licatinder.utiles;
+package com.lucatinder.utiles;
 
 import java.util.ArrayList;
 import java.util.List;
