@@ -26,7 +26,7 @@ public class Perfil {
 	private boolean genero;
 	
 	@Column (name = "fecha_de_nacimiento")
-	private Date fecha_de_nacimiento;
+	private int edad;
 	
 	@Column (name = "descripcion")
 	private String descripcion;
@@ -35,30 +35,30 @@ public class Perfil {
 		super();
 	}
 
-	public Perfil(String alias, String nombre, boolean genero, Date fecha_de_nacimiento) {
+	public Perfil(String alias, String nombre, boolean genero, int edad) {
 		super();
 		this.alias = alias;
 		this.nombre = nombre;
 		this.genero = genero;
-		this.fecha_de_nacimiento = fecha_de_nacimiento;
+		this.edad = edad;
 	}
 
-	public Perfil(String alias, String nombre, boolean genero, Date fecha_de_nacimiento, String descripcion) {
+	public Perfil(String alias, String nombre, boolean genero, int edad, String descripcion) {
 		super();
 		this.alias = alias;
 		this.nombre = nombre;
 		this.genero = genero;
-		this.fecha_de_nacimiento = fecha_de_nacimiento;
+		this.edad = edad;
 		this.descripcion = descripcion;
 	}
 	
-	public Perfil(int id, String alias, String nombre, boolean genero, Date fecha_de_nacimiento, String descripcion) {
+	public Perfil(int id, String alias, String nombre, boolean genero, int edad, String descripcion) {
 		super();
 		this.id = id;
 		this.alias = alias;
 		this.nombre = nombre;
 		this.genero = genero;
-		this.fecha_de_nacimiento = fecha_de_nacimiento;
+		this.edad = edad;
 		this.descripcion = descripcion;
 	}
 	
@@ -86,11 +86,11 @@ public class Perfil {
 	public void setGenero(boolean genero) {
 		this.genero = genero;
 	}
-	public Date getFecha_de_nacimiento() {
-		return fecha_de_nacimiento;
+	public int getEdad() {
+		return edad;
 	}
-	public void setFecha_de_nacimiento(Date fecha_de_nacimiento) {
-		this.fecha_de_nacimiento = fecha_de_nacimiento;
+	public void setEdad(int edad) {
+		this.edad = edad;
 	}
 	public String getDescripcion() {
 		return descripcion;

@@ -20,7 +20,7 @@
 
   
    
-    <div id="ficha" >
+    <div id="ficha" th:each="perfil ${lista}" >
         <div align=center><img align=center class="collage" src="http://assets.stickpng.com/thumbs/585e4beacb11b227491c3399.png" width=300 height=300></div>
         <br/>
         <div align=center><span th:inline="text">[[${alias}]]</span><br /><span th:inline="text">[[${edad}]]</span><br>
