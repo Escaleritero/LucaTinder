@@ -1,6 +1,5 @@
 package com.lucatinder.model;
 
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,68 +13,102 @@ public class Perfil {
 	@Id
 	@GeneratedValue
 	@Column (name = "id_perfiles")
-	//@ManyToOne/OneToMany/JoinColumn...??
 	private int id;
-	private String alias, nombre, descripcion;
-	private boolean genero;
-	private Date fecha_de_nacimiento;		
 	
-	public Perfil(int id, String alias, String nombre, String descripcion, boolean genero, Date fecha_de_nacimiento) {
-		super();
-		this.id = id;
-		this.alias = alias;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.genero = genero;
-		this.fecha_de_nacimiento = fecha_de_nacimiento;
-	}
+	@Column (name = "alias")
+	private String alias;
+	
+	@Column (name = "nombre")
+	private String nombre;
+	
+	@Column (name = "genero")
+	private boolean genero;
+	
+	@Column (name = "edad")
+	private int edad;
+	
+	@Column (name = "descripcion")
+	private String descripcion;
 	
 	public Perfil() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public void setAlias(String alias) {
+	
+	public Perfil(String alias) {
+		super();
 		this.alias = alias;
 	}
 
-	public void setNombre(String nombre) {
+
+	public Perfil(String alias, String nombre, boolean genero, int edad) {
+		super();
+		this.alias = alias;
 		this.nombre = nombre;
+		this.genero = genero;
+		this.edad = edad;
 	}
 
-	public void setDescripcion(String descripcion) {
+	public Perfil(String alias, String nombre, boolean genero, int edad, String descripcion) {
+		super();
+		this.alias = alias;
+		this.nombre = nombre;
+		this.genero = genero;
+		this.edad = edad;
 		this.descripcion = descripcion;
 	}
-
-	public void setGenero(boolean genero) {
+	
+	public Perfil(int id, String alias, String nombre, boolean genero, int edad, String descripcion) {
+		super();
+		this.id = id;
+		this.alias = alias;
+		this.nombre = nombre;
 		this.genero = genero;
+		this.edad = edad;
+		this.descripcion = descripcion;
 	}
-
-	public void setFecha_de_nacimiento(Date fecha_de_nacimiento) {
-		this.fecha_de_nacimiento = fecha_de_nacimiento;
-	}
-
+	
 	public int getId() {
 		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getAlias() {
 		return alias;
 	}
+	public void setAlias(String alias) {
+		this.alias = alias;
+	}
 	public String getNombre() {
 		return nombre;
 	}
-	public String getDescripcion() {
-		return descripcion;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	public boolean isGenero() {
 		return genero;
 	}
-	public Date getFecha_de_nacimiento() {
-		return fecha_de_nacimiento;
+	public void setGenero(boolean genero) {
+		this.genero = genero;
+	}
+	
+	
+	public int getEdad() {
+		return edad;
+	}
+
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 	
 }
