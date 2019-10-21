@@ -62,6 +62,10 @@ public class Perfil {
 		this.edad = edad;
 	}
 
+	
+	@Id
+	@GeneratedValue
+	@Column(name = "id_perfiles")
 	public int getId() {
 		return id;
 	}
