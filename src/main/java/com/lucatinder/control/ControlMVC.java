@@ -1,5 +1,7 @@
 package com.lucatinder.control;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,13 +46,14 @@ public class ControlMVC {
 		}
 	}
 
-
+*/
 	@PostMapping("/login")
 	public String loginPerfil(@ModelAttribute String alias, Model model) {
 		Perfil perfil = iservicios.validarPerfil(alias);
-		List<Perfil> listaPerfil = iservicios.listaPerfiles(perfil.getId());
 		logger.info("--ABRIR SESION");
+		
 		if (perfil != null) {
+			List<Perfil> listaPerfil = iservicios.listaPerfiles(perfil.getId());
 			model.addAttribute("perfil", perfil);
 			model.addAttribute("lista", listaPerfil);
 			return "principal";
@@ -58,5 +61,5 @@ public class ControlMVC {
 			return "index";
 		}
 	}
-	*/
+	
 }

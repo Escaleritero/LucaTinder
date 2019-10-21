@@ -7,12 +7,14 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.lucatinder.model.Perfil;
 
 @Repository
+@Transactional(readOnly = true)
 public class PerfilRepositorioImpl implements PerfilRepositorioCustom {
-/*
+
 	@PersistenceContext
 	EntityManager em;
 	
@@ -29,13 +31,13 @@ public class PerfilRepositorioImpl implements PerfilRepositorioCustom {
 		Query q = em.createNativeQuery(sql);
 		return q.getResultList();
 	}
-
+/*
 	@Override
 	public Perfil obtenerPerfil(String alias) {
 		String sql = "SELECT * FROM perfiles WHERE id_perfil =(\""+alias+"\")";
 		Query q = em.createNativeQuery(sql);
-		
-		return (Perfil)q.getSingleResult() ;
+		Perfil p = (Perfil) q.getSingleResult();
+		return p;
 	}
 	*/
 }
