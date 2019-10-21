@@ -8,81 +8,95 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "perfiles")
+@Table(name = "perfiles")
 public class Perfil {
 
-
-	@Override
-	public String toString() {
-		return "Perfil [id=" + id + ", alias=" + alias + ", nombre=" + nombre + ", descripcion=" + descripcion
-				+ ", genero=" + genero + ", edad=" + edad + "]\n";
-	}
-	//@ManyToOne/OneToMany/JoinColumn...??
+	@Id
+	@GeneratedValue
+	@Column (name = "id_perfiles")
 	private int id;
-	private String alias, nombre, descripcion;
-	private boolean genero;
-	private int edad;		
 	
-	public Perfil(int id, String alias, String nombre, String descripcion, boolean genero, int edad) {
-		super();
-		this.id = id;
-		this.alias = alias;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.genero = genero;
-		this.edad = edad;
-	}
+	@Column (name = "alias")
+	private String alias;
+	
+	@Column (name = "nombre")
+	private String nombre;
+	
+	@Column (name = "genero")
+	private boolean genero;
+	
+	@Column (name = "fecha_de_nacimiento")
+	private Date fecha_de_nacimiento;
+	
+	@Column (name = "descripcion")
+	private String descripcion;
 	
 	public Perfil() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public void setAlias(String alias) {
+	public Perfil(String alias, String nombre, boolean genero, Date fecha_de_nacimiento) {
+		super();
 		this.alias = alias;
-	}
-
-	public void setNombre(String nombre) {
 		this.nombre = nombre;
+		this.genero = genero;
+		this.fecha_de_nacimiento = fecha_de_nacimiento;
 	}
 
-	public void setDescripcion(String descripcion) {
+	public Perfil(String alias, String nombre, boolean genero, Date fecha_de_nacimiento, String descripcion) {
+		super();
+		this.alias = alias;
+		this.nombre = nombre;
+		this.genero = genero;
+		this.fecha_de_nacimiento = fecha_de_nacimiento;
 		this.descripcion = descripcion;
 	}
-
-	public void setGenero(boolean genero) {
-		this.genero = genero;
-	}
-
-	public void setEdad(int edad) {
-		this.edad = edad;
-	}
-
 	
-	@Id
-	@GeneratedValue
-	@Column(name = "id_perfiles")
+	public Perfil(int id, String alias, String nombre, boolean genero, Date fecha_de_nacimiento, String descripcion) {
+		super();
+		this.id = id;
+		this.alias = alias;
+		this.nombre = nombre;
+		this.genero = genero;
+		this.fecha_de_nacimiento = fecha_de_nacimiento;
+		this.descripcion = descripcion;
+	}
+	
 	public int getId() {
 		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getAlias() {
 		return alias;
 	}
+	public void setAlias(String alias) {
+		this.alias = alias;
+	}
 	public String getNombre() {
 		return nombre;
 	}
-	public String getDescripcion() {
-		return descripcion;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	public boolean isGenero() {
 		return genero;
 	}
-	public int getEdad() {
-		return edad;
+	public void setGenero(boolean genero) {
+		this.genero = genero;
+	}
+	public Date getFecha_de_nacimiento() {
+		return fecha_de_nacimiento;
+	}
+	public void setFecha_de_nacimiento(Date fecha_de_nacimiento) {
+		this.fecha_de_nacimiento = fecha_de_nacimiento;
+	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 	
 }

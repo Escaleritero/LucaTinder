@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.lucatinder.model.Perfil;
 
 public class PerfilRepositorioImpl implements PerfilRepositorioCustom {
-
+/*
 	@PersistenceContext
 	EntityManager em;
 	
@@ -35,4 +35,5 @@ public class PerfilRepositorioImpl implements PerfilRepositorioCustom {
 		Query q = em.createNativeQuery(sql);
 		return (Perfil)q.getSingleResult() ;
 	}
+	*/
 }

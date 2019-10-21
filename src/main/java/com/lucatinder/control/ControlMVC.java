@@ -1,32 +1,18 @@
 package com.lucatinder.control;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.lucatinder.model.Perfil;
-import com.lucatinder.servicios.IServicios;
-
-/**
- * 
- * @author RocioB
- *
- */
 
 @Controller
 public class ControlMVC {
 
-	@Autowired
+	/*@Autowired
 	private IServicios iservicios;
-
+*/
 	private static final Logger logger = LoggerFactory.getLogger(ControlMVC.class);
 
 	@GetMapping("/")
@@ -34,12 +20,7 @@ public class ControlMVC {
 		logger.info("--en INICIO");
 		return "index";
 	}
-
-	/**
-	 * @param model
-	 * @return registro
-	 */
-
+/*
 	@GetMapping("/registro") // alta
 	public String newPerfil(Model model) {
 		logger.info("--NEW");
@@ -47,10 +28,6 @@ public class ControlMVC {
 		return "registro";
 	}
 
-	/**
-	 * @param perfil Metodo para crear Perfil nuevo
-	 * @return principal
-	 */
 	@PostMapping("/registro") // alta
 	public String addPerfil(@ModelAttribute Perfil perfil) {
 		logger.info("--ADD");
@@ -62,11 +39,6 @@ public class ControlMVC {
 		}
 	}
 
-	/**
-	 * @param alias Metodo para abrir sesion, validando el alias y devolver listado
-	 *              de 20 contactos. Si falla vuelve al comienzo.
-	 * @return "principal" / "index"
-	 */
 
 	@PostMapping("/login")
 	public String loginPerfil(@ModelAttribute String alias, Model model) {
@@ -79,8 +51,7 @@ public class ControlMVC {
 			return "principal";
 		} else {
 			return "index";
-
 		}
 	}
-
+	*/
 }
