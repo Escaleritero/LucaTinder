@@ -92,12 +92,18 @@ public class Perfil {
 	public void setGenero(boolean genero) {
 		this.genero = genero;
 	}
-	public int edad() {
+	
+	
+	public int getEdad() {
 		return edad;
 	}
+
+
 	public void setEdad(int edad) {
 		this.edad = edad;
 	}
+
+
 	public String getDescripcion() {
 		return descripcion;
 	}

@@ -4,7 +4,8 @@
 	    <meta charset="UTF-8">
 	    <title>Web Luca TIC</title>
 	    <!-- CSS -->
-		<link rel="stylesheet" href="/resources/css/estilos.css">
+		<link rel="stylesheet" 
+		th:href="@{/css/estilo.css}" />
 	</head>
 	
 	<body id="main">
@@ -23,7 +24,7 @@
 		    
 	        <br/>
 	        
-	        <form class="formulario" method="post"  th:action="@{/registro}">  
+	        <form class="formulario" method="get"  th:action="@{/registro}">  
 	        	<p align=left class="texto-intermedio">¿No tienes cuenta?</p>
 		        <input type="submit" align=center class="boton-general" value="Registro"/>
 		        <br/>
