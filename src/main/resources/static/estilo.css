@@ -94,6 +94,17 @@ box-sizing: border-box;
     
 }
 
+.texto-intermedio-blanco {
+ font-family: Arial;
+    font-weight: 600;
+    color:#ffffff;
+  margin-left: 10px;      
+ font-size: 20px;
+            text-shadow: 0.1em 0.1em 0.05em #000;
+     text-shadow: 0.1em 0.1em 0.2em #333;
+    
+}
+
 .texto-bajo {
  font-family: Arial;
     font-weight: 200;
@@ -101,5 +112,41 @@ box-sizing: border-box;
  font-size: 16px;
             text-shadow: 0.1em 0.1em 0.05em #000;
      text-shadow: 0.1em 0.1em 0.2em #333;
+    
+}
+
+#ficha {
+     font-family: Arial;
+    font-weight: 800;
+    margin: 0 auto;
+    width: 400px;
+    padding: 1em;
+    border: 5px solid #333;
+    border-radius: 1em;
+            box-shadow: 0.5em 0.5em 5em #444;
+     box-shadow: 0.1em 0.1em 0.2em #666;
+}
+
+#botones
+{
+    overflow: hidden;
+	width: 100%;
+}
+
+#like
+{
+float: right;
+}
+#dislike
+{
+  float: left;
+}
+
+.box
+{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    
     
 }
