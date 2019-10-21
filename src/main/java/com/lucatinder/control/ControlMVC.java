@@ -30,7 +30,7 @@ public class ControlMVC {
 	private static final Logger logger = LoggerFactory.getLogger(ControlMVC.class);
 
 	@GetMapping("/")
-	public String inicio(Model model) {
+	public String inicio(Model model, @ModelAttribute("perfil") Perfil perfil) {
 		logger.info("--en INICIO");
 		return "index";
 	}
