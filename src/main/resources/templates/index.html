@@ -1,35 +1,35 @@
 <!DOCTYPE html>
-<html lang=es xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Web Luca TIC</title>
-     <!-- CSS -->
-<link rel="stylesheet" th:href="@{/css/estilo.css}">
-
-</head>
-<body id="main">
-<div align=center id="barra-superior">
-   <h1 id="titulo">  Lucatinder <img src="https://cdn.icon-icons.com/icons2/935/PNG/64/like-heart-outline-symbol_icon-icons.com_73226.png"></h1>
-</div>
-               <br/>
-               <div align=center>
-                   <form class="formulario" method="post" th:object="${alias}" th:action="@{/principal}">  
-                       <p align=left class="texto-intermedio">Entrar</p>
-                   <p align=left class="texto-bajo">Alias: <input th:field="*{nombre}"type="text" name="nombre" size="40" required="required" ></p>
-                                     
-                                                      <input type="submit" align=center class="boton-general" value="Iniciar-sesión">
-                   <br/>
-                   </form>
-                   <br/>
-                  <form class="formulario" method="post"  th:action="@{/registro}">  
-                  
-                   <p align=left class="texto-intermedio">¿No tienes cuenta?</p>
-                   
-                   <input type="submit" align=center class="boton-general" value="Registro">
-                   <br/>
-                
-                   </form>
-                                    
-               </div>
-                
-</body>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Web Luca TIC</title>
+	    <!-- CSS -->
+		<link rel="stylesheet" 
+		th:href="@{/css/estilo.css}" />
+	</head>
+	
+	<body id="main">
+		<div align=center id="barra-superior">
+		   <h1 id="titulo">  Lucatinder <img src="https://cdn.icon-icons.com/icons2/935/PNG/64/like-heart-outline-symbol_icon-icons.com_73226.png"></h1>
+		</div>
+		<br/>
+	    
+	    <div align=center>
+		    <form class="formulario" th:action="@{/principal}" method="post" name="principal" th:object="${perfil}" >  
+		        <p align=left class="texto-intermedio">Entrar</p>
+			    <p align=left class="texto-bajo" for="alias"> Alias: <input type="text" th:field="*{alias}" required="required"/></p> 
+			    <input type="submit" align=center class="boton-general" value="Iniciar-sesión"/>
+			    <br/>
+		    </form>
+		    
+	        <br/>
+	        
+	        <form class="formulario" method="get"  th:action="@{/registro}">  
+	        	<p align=left class="texto-intermedio">¿No tienes cuenta?</p>
+		        <input type="submit" align=center class="boton-general" value="Registro"/>
+		        <br/>
+	        </form>
+		</div>
+	    
+	</body>
+</html>

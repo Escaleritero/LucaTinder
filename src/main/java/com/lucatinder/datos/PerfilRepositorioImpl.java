@@ -6,11 +6,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.springframework.stereotype.Repository;
+
 import com.lucatinder.model.Perfil;
 
-
+@Repository
 public class PerfilRepositorioImpl implements PerfilRepositorioCustom {
-
+/*
 	@PersistenceContext
 	EntityManager em;
 	
@@ -35,4 +37,5 @@ public class PerfilRepositorioImpl implements PerfilRepositorioCustom {
 		
 		return (Perfil)q.getSingleResult() ;
 	}
+	*/
 }
