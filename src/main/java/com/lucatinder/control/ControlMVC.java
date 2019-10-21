@@ -5,7 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
+import com.lucatinder.model.Perfil;
 
 @Controller
 public class ControlMVC {
@@ -16,7 +18,7 @@ public class ControlMVC {
 	private static final Logger logger = LoggerFactory.getLogger(ControlMVC.class);
 
 	@GetMapping("/")
-	public String inicio(Model model) {
+	public String inicio(Model model, @ModelAttribute("perfil") Perfil perfil) {
 		logger.info("--en INICIO");
 		return "index";
 	}
