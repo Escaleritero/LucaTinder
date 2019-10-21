@@ -12,7 +12,7 @@ import com.lucatinder.model.Perfil;
 public class ServiciosImpl  implements IServicios{
 	
 	@Autowired
-	IPerfilRepositorio iPerfilRepositorio;
+	IPerfilRepositorio ipr ;
 
 	/**
 	 * Metodo que le pasa un objeto para mandarlo a la base de datos.
@@ -23,10 +23,9 @@ public class ServiciosImpl  implements IServicios{
 	
 	@Override
 	public Perfil addPerfil(Perfil perfil) {
-		int validar = 0;
-		validar = iPerfilRepositorio.validarPerfil(perfil.getAlias());
-		if(validar != 0) {
-			iPerfilRepositorio.save(perfil);
+		perfil = ipr.obtenerPerfil(perfil.getAlias());
+		if(perfil == null) {
+			ipr.save(perfil);
 			return perfil;
 		}else {
 			return null;
@@ -35,28 +34,23 @@ public class ServiciosImpl  implements IServicios{
 	
 	@Override
 	public Perfil validarPerfil(String alias) {
-		int validar = 0;
-		validar = iPerfilRepositorio.validarPerfil(alias);
-		if(validar!=0) {
-			return null;
+		Perfil perfil = ipr.obtenerPerfil(alias);
+		if(perfil != null) {
+			return perfil;
 		}else {
 			return null;
 		}
 	}
-	
+
 	@Override
 	public List<Perfil> listaPerfiles(int id_perfil) {
-		List<Perfil> listaPerfil;
-		listaPerfil = iPerfilRepositorio.listaPerfilId(id_perfil);
 		
-		if(listaPerfil.size()>=20) {
-			return listaPerfil;
-		}
-		else {			
-			//generadorDePerfil(); --> Método que se está creando en utilidades
-			//Descomentar esta línea cuando esté hecho
-		}
 		return null;
 	}
 
+	@Override
+	public void deletePerfil(int id_perfil) {
+		ipr.deleteById(id_perfil);
+		
+	}
 }
