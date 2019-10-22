@@ -62,8 +62,7 @@ public class ControlMVC {
 			return "principal";
 		}
 	}
-
-*/
+	
 	@PostMapping("/login")
 	public String loginPerfil(@ModelAttribute String alias, Model model) {
 		Perfil perfil = iservicios.validarPerfil(alias);

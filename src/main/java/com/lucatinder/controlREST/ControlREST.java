@@ -22,9 +22,7 @@ import ch.qos.logback.classic.Logger;
 
 /**
  * Clase= ControlRest
- * 
  * @author Ro
- *
  */
 
 @RestController
@@ -39,7 +37,11 @@ public class ControlREST {
 
 	private static final Logger logger = (Logger) LoggerFactory.getLogger(ControlREST.class);
 
-	
+	/**
+	 * @author Ro
+	 * @param perfil
+	 * @return Objeto Perfil
+	 */
 	@PostMapping
 	ResponseEntity<?> addPerfil(@RequestBody Perfil perfil) {
 		logger.info("--esta es la primera linea de ADDPERFIL REST");
@@ -49,43 +51,57 @@ public class ControlREST {
 				.path("/{id}").buildAndExpand(result.getId())
 				.toUri();
 		return ResponseEntity.created(location).build();
-	}
+	} // BORRAME: controlado - Ro
 
+	/**
+	 * @author Ro
+	 * @param id_perfil
+	 * @return Lista de Perfiles
+	 */
 	@GetMapping ("/listadoPerfiles/rest/{id_perfil}") 
 	public List<Perfil> listaPerfiles (@PathVariable int id_perfil){
+		logger.info("--LISTA PERFILES_REST");
 		return iservicios.listaPerfiles(id_perfil);	
 	}
 
+	/**
+	 * @author Ro
+	 * @param id_perfil
+	 * @param id_perfilLike
+	 * Guarda contactados
+	 */
 	@PostMapping ("/saveLike/rest/{id_perfil, id_perfilLike}")
 	public void saveLikeRest (@PathVariable int id_perfil, int id_perfilLike) {
+	logger.info("--SAVELIKE_REST");
 	iservicios.saveLike(id_perfil, id_perfilLike);
 	}
 	
+	/**
+	 * @author Ro
+	 * @param id_perfil
+	 * @param id_perfilDislike
+	 * Guarda descartados
+	 */
 	@PostMapping ("/saveDislike/rest/{id_perfil, id_perfilDislike}")
 	public void saveDislikeRest (@PathVariable int id_perfil, int id_perfilDislike) {
+		logger.info("--SAVEDISLIKE_REST");
 		iservicios.saveDislike(id_perfil, id_perfilDislike);
 	}
-	
+	/**
+	 * @author Ro
+	 * @param alias
+	 */
 	@GetMapping ("/validarPerfil/rest/{alias}")
 	public void validarPerfilRest (@PathVariable String alias) {
+		logger.info("--VALIDARPERFIL_REST");
 		iservicios.validarPerfil(alias);
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	//para borrar o editar perfil por ID
+	//ROCIO: para borrar o editar perfil por ID
 	//@PostMapping ("/listadoPerfiles/perfil/rest/{id_perfil}") 
 	//public void addUsuario (@PathVariable int id_perfil){
 	//	iservicios.addPerfil(iservicios.devuelvePorID(id_perfil));	
 	//}
-	
-	
-		
 	
 	}

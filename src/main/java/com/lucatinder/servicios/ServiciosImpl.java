@@ -30,8 +30,8 @@ public class ServiciosImpl  implements IServicios{
 	 */
 	@Override
 	public Perfil addPerfil(Perfil perfil) {
-		perfil = prc.obtenerPerfil(perfil.getAlias());
-		if(perfil == null) {
+		Perfil aux = prc.obtenerPerfil(perfil.getAlias());
+		if(aux == null) {
 			ipr.save(perfil);
 			return perfil;
 		}else {
@@ -40,7 +40,6 @@ public class ServiciosImpl  implements IServicios{
 	}
 	/**
 	 * Metodo para validar el alias introducido por el usuario.
-	 * 
 	 * @param alias parametro de tipo String que recoger el alias introducido por el usuario
 	 * @return retorna un perfil o un null si da fallo.
 	 */
@@ -56,7 +55,6 @@ public class ServiciosImpl  implements IServicios{
 
     /**
      * @author Ro
-     * 
      * Metodo para pasar el dislike que ha dado el usuario a la capa datos
      * 
      * @param id_perfil parametro de tipo entero donde guarda el id del perfil conectado
@@ -114,7 +112,7 @@ public class ServiciosImpl  implements IServicios{
 	}
 
 		public Perfil devuelvePorID(int id_perfil) {
-		Optional<Perfil> perfil=iPerfilRepositorio.findById(id_perfil);
+		Optional<Perfil> perfil=ipr.findById(id_perfil);
 		return perfil.get();
 	}
 }
