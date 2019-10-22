@@ -7,9 +7,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "perfiles")
-public class Perfil {
-
+@Table(name = "perfiles")
+public class Perfil {	
+	
 	@Id
 	@GeneratedValue
 	@Column (name = "id_perfiles")
@@ -67,6 +67,15 @@ public class Perfil {
 		this.edad = edad;
 		this.descripcion = descripcion;
 	}
+	public Perfil(int id, String alias, String nombre, String descripcion, boolean genero, int edad) {
+		super();
+		this.id = id;
+		this.alias = alias;
+		this.nombre = nombre;
+		this.genero = genero;
+		this.edad = edad;
+		this.descripcion = descripcion;
+	}	
 	
 	public Perfil(int id, String alias, String nombre, String descripcion, boolean genero, int edad) {
 		super();
