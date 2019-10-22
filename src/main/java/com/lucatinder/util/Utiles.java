@@ -60,7 +60,7 @@ public class Utiles {
 	}
 	
 	/**
-	 * Metodo que sirve para coger los datos de un usuario
+	 * Metodo que sirve para coger los datos de un usuario.
 	 * 
 	 * @param listaSQL es la lista de datos que recibimos de sql.
 	 * @return retorna una lista de objetos de tipo Perfil.
