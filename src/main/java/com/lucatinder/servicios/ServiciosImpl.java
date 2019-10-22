@@ -1,6 +1,7 @@
 package com.lucatinder.servicios;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,17 +11,21 @@ import com.lucatinder.model.Perfil;
 
 @Service
 public class ServiciosImpl  implements IServicios{
-	/*
+	
+	
+	
+	
 	@Autowired
 	IPerfilRepositorio iPerfilRepositorio;
-*/
+
+
 	/**
 	 * Metodo que le pasa un objeto para mandarlo a la base de datos.
 	 * 
 	 * @param perfil: objeto de la clase Perfil
 	 * @return retorna un objeto o en caso de fallo un null
 	 */
-	/*
+	
 	@Override
 	public Perfil addPerfil(Perfil perfil) {
 		int validar = 0;
@@ -57,6 +62,37 @@ public class ServiciosImpl  implements IServicios{
 		}
 		return null;
 	}
-	*/
 
+	/**
+	 * @Ro
+	 * metodo para pasar los descartados
+	 */
+	
+	
+	@Override
+	public Perfil saveDislike(int id_perfil1, int id_perfil2) {
+		iPerfilRepositorio.saveDislike(id_perfil1, id_perfil2);
+		return null;
+	}
+
+	/**
+	 * @Ro
+	 * metodo para pasar los contactados
+	 */
+	
+	@Override
+	public Perfil saveLike(int id_perfil1, int id_perfil2) {
+		iPerfilRepositorio.saveLike(id_perfil1, id_perfil2);
+		return null;
+	}
+	
+	public Perfil devuelvePorID(int id_perfil) {
+		Optional<Perfil> perfil=iPerfilRepositorio.findById(id_perfil);
+		return perfil.get();
+	}
+	
+	
+	
+	
+	
 }
