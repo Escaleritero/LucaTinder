@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.lucatinder.model.Perfil;
 import com.lucatinder.servicios.IServicios;
@@ -59,4 +60,30 @@ public class ControlMVC {
 		}
 	}
 	*/
+	
+	/*
+	 * @Pedro
+	 * Metodo que guarda los cuando el perfil1 da un like al perfil2
+	 * */
+	@PostMapping("/like")
+	//Especificar en la página like que los parámetros a pasar son id1 e id2
+	public String saveLike(@RequestParam("id_perfil1") int id_perfil1, @RequestParam("id_perfil2") int id_perfil2) {		
+		iservicios.saveLike(id_perfil1, id_perfil2);
+		System.out.println("id_perfil1= "+id_perfil1+" id_perfil2: "+id_perfil2);
+		return "principal";
+	}
+	
+	/*
+	 * @Pedro
+	 * Metodo que guarda los cuando el perfil1 da un like al perfil2
+	 * */
+	@PostMapping("/like")
+	//Especificar en la página like que los parámetros a pasar son id1 e id2
+	public String saveDislike(@RequestParam("id_perfil1") int id_perfil1, @RequestParam("id_perfil2") int id_perfil2) {
+		iservicios.saveDislike(id_perfil1, id_perfil2);
+		System.out.println("id_perfil1= "+id_perfil1+" id_perfil2: "+id_perfil2);
+		return "principal";
+	}
+	
+	
 }

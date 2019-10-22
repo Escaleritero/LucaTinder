@@ -7,5 +7,6 @@ import com.lucatinder.model.Perfil;
 
 @Repository
 public interface IPerfilRepositorio extends JpaRepository<Perfil, Integer>, PerfilRepositorioCustom{
+
 	
 }
