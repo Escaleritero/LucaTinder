@@ -32,25 +32,26 @@ public class ControlMVC {
 		return "index";
 	}
 
-	@GetMapping("/registro") // alta
+	@GetMapping("/formulario") // alta
 	public String newPerfil(Model model) {
 		logger.info("--NEW");
 		model.addAttribute("perfil", new Perfil());
 		return "registro";
 	}
-/*
+
 	@PostMapping("/registro") // alta
 	public String addPerfil(@ModelAttribute Perfil perfil) {
 		logger.info("--ADD");
-		iservicios.addPerfil(perfil);
-		if (perfil == null) {
+		Perfil aux;
+		aux = iservicios.addPerfil(perfil);
+		if (aux == null) {
 			return "registro";
 		} else {
-			return "principal";
+			perfilLogin = aux;
+			return "redirect:/home";
 		}
 	}
 
-*/
 	@PostMapping("/login")
 	public String loginPerfil(Perfil p, Model model) {
 		logger.info("-------ABRIR SESION"+p.getAlias()+"----");		

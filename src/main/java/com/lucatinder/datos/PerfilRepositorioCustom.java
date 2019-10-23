@@ -24,32 +24,66 @@ public class PerfilRepositorioCustom {
 	
 	@SuppressWarnings("unchecked")
     public List<Perfil> getPerfilSelection(int id_perfil) {
-		String hql = "SELECT p.*  " + 
-					"FROM Perfil p " + 
-					"WHERE p.id_perfil != :id1" + 
-						"AND p.id_perfil NOT IN (" + 
-						"SELECT c.id_perfilLike" + 
-						"FROM Contactos c " + 
-							"JOIN Perfil p" + 
-							"ON p.id_perfil = c.id_perfil" + 
-						"WHERE p.id_perfil = :id2) AND p.id_perfil NOT IN (" + 
-								"SELECT d.id_perfilDislike" + 
-								"FROM Descartes d" + 
-									"JOIN Perfil p" + 
-									"ON p.id_perfil = d.id_perfil" + 
-								"WHERE p.id_perfil = :id3) LIMIT 20";
+		
+/*
+		String hql ="FROM Perfil " + 
+					"WHERE Perfil.id != :id1 " + 
+						"AND Perfil.id NOT IN ( " + 
+						"SELECT Contactos.id_perfilLike " + 
+						"FROM Contactos " + 
+							"JOIN Perfil " + 
+							"ON Perfil.id = Contactos.id_perfil " + 
+						"WHERE Perfil.id = :id2) AND Perfil.id NOT IN ( " + 
+								"SELECT Descartes.id_perfilDislike " + 
+								"FROM Descartes " + 
+									"JOIN Perfil " + 
+									"ON Perfil.id = Descartes.id_perfil " + 
+								"WHERE Perfil.id = :id3)";
+	
+		
+		String hql2 = "FROM Contactos " + 
+				"JOIN Perfil " + 
+				"ON Perfil.id = Contactos.id_perfil "+
+				"WHERE Perfil.id = :id2)";
+		logger.info("--Realizo consulta q2--- ");
+		Query q2 = em.createQuery(hql);
+		q2.setParameter("id2", id_perfil);
+		logger.info("----q2--- "+q2.getResultList().toString());
+		
+		
+		String hql3 = "FROM Descartes " + 
+				"JOIN Perfil " + 
+				"ON Perfil.id = Descartes.id_perfil " + 
+			"WHERE Perfil.id = :id3)";
+		Query q3 = em.createQuery(hql);
+		q3.setParameter("id3", id_perfil);
+		logger.info("----q3--- "+q3.getResultList().toString());		
+		
+		
+		logger.info("------------------------QUERY RAFA-   " + hql);
 		Query q = em.createQuery(hql);
+       
         q.setParameter("id1", id_perfil);
         q.setParameter("id2", id_perfil);
         q.setParameter("id3", id_perfil);
+        logger.info("------------------------ 1");
+        */
+		
+		//Prueba
+
+		
+		// Realizamos una prueba basica
+		logger.info("--------- Iniciando getPerfilSelection");
+		String hql ="FROM Perfil";
+		Query q = em.createQuery(hql);
+		q.setMaxResults(10);
         
-        if(q.getResultList().size()>0) {
-            List<Perfil> lp = q.getResultList();
-            return lp;
-        }
-        else {
-        	return null;
-        }
+        
+        List<Perfil> p = q.getResultList();
+        logger.info("------ LISTADO: "+p);
+
+        return p;
+
     }
 	
     @SuppressWarnings("unchecked")
@@ -76,8 +110,8 @@ public class PerfilRepositorioCustom {
 	 */
     @SuppressWarnings("unchecked")
     public Perfil obtenerPerfil(String alias) {
-    	Query q = em.createQuery("from Perfil where alias = :id");
-        q.setParameter("id", alias);
+    	Query q = em.createQuery("from Perfil where alias = :alias");
+        q.setParameter("alias", alias);
         if(q.getResultList().size()>0) {
             Perfil p1 = (Perfil)q.getResultList().get(0);
             return p1;
