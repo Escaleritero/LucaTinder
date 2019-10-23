@@ -101,10 +101,6 @@ public class ServiciosImpl  implements IServicios{
 			return listaPerfil;
 		}
 	}
-<<<<<<< HEAD
-	*/
-
-=======
 
 	/**
 	 * Metodo para eliminar la cuenta del perfil
@@ -115,5 +111,5 @@ public class ServiciosImpl  implements IServicios{
 	public void deletePerfil(int id_perfil) {
 		ipr.deleteById(id_perfil);
 	}
->>>>>>> master
+
 }
