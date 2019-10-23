@@ -51,6 +51,7 @@ public class ControlMVC {
 			return "redirect:/home";
 		}
 	}
+
 	@PostMapping("/login")
 	public String loginPerfil(Perfil p, Model model) {
 		logger.info("-------ABRIR SESION" + p.getAlias() + "----");
@@ -65,7 +66,7 @@ public class ControlMVC {
 			return "redirect:/";
 		}
 	}
-	
+
 	/**
 	 * @autor Pedro Umpierrez
 	 * 
@@ -97,12 +98,20 @@ public class ControlMVC {
 	 * @return vuelve a retornar la pagina principal de la cual esta conectado el
 	 *         usuario
 	 */
-	
+
 	@PostMapping("/disLike")
 	public String saveDislike(@RequestParam("id") int id_perfilDislike) {
 		iservicios.saveDislike(id_perfil, id_perfilDislike);
 		System.out.println("id_perfil1= " + id_perfil + " id_perfil2: " + id_perfilDislike);
 		return "redirect:/mvc/profile/home";
+	}
+
+	@GetMapping("/home")
+	public String homePerfil(Model model) {
+		List<Perfil> listaPerfil = iservicios.listaPerfiles(id_perfil);
+		model.addAttribute("perfil", perfilLogin);
+		model.addAttribute("lista", listaPerfil);
+		return "principal";
 	}
 
 }

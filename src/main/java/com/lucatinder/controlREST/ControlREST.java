@@ -37,7 +37,7 @@ public class ControlREST {
 	private static final Logger logger = (Logger) LoggerFactory.getLogger(ControlREST.class);
 
 	@GetMapping("/home")
-	public List<Perfil> getProfileSelection() throws Exception {
+	public List<Perfil> mostrarListaPerfiles() throws Exception {
 		logger.info("-- en HOME");
 		return iservicios.listaPerfiles(id_perfil);
 	}
@@ -60,39 +60,25 @@ public class ControlREST {
 			this.id_perfil = p.getId();
 		}
 		return p;
-	} // BORRAME: ERROR ----
+	} // BORRAME: ERROR ---- 
 
 	/**
 	 * @author Ro
 	 * @param perfil
 	 * @return Objeto Perfil
 	 */
-	@PostMapping
-	ResponseEntity<?> addPerfil(@RequestBody Perfil perfil) {
+	@PostMapping("/alta/rest")
+	Perfil addPerfil(@RequestBody Perfil perfil) {
 		logger.info("--esta es la primera linea de ADDPERFIL REST-ERROR EN PERFIL CONVERTER");
-		Perfil result = iservicios.addPerfil(perfil);
-		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(result.getId())
-				.toUri();
-		return ResponseEntity.created(location).build();
+		return iservicios.addPerfil(perfil);
 	} // BORRAME: controlado - Ro ERROR ----PERFIL CONVERTER
-
-	/**
-	 * @author Ro
-	 * @param id_perfil
-	 * @return Lista de Perfiles
-	 */
-	@GetMapping("/listadoPerfiles/rest/{id_perfil}")
-	public List<Perfil> listaPerfiles(@PathVariable int id_perfil) {
-		logger.info("--LISTA PERFILES_REST-FATAL ERROR 404");
-		return iservicios.listaPerfiles(id_perfil);
-	} // BORRAME: FALLA 404. Rastrear-----QUERY
 
 	/**
 	 * @author Ro
 	 * @param id_perfil
 	 * @param id_perfilLike __ Guarda contactados
 	 */
-	@PostMapping("/saveLike/rest/{id_perfilLike}")
+	@GetMapping("/saveLike/rest/{id_perfilLike}")
 	public void saveLikeRest(@PathVariable int id_perfilLike) {
 		logger.info("--SAVELIKE_REST");
 		iservicios.saveLike(id_perfil, id_perfilLike);

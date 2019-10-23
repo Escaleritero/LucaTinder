@@ -92,6 +92,8 @@ public class PerfilRepositorioCustom {
         em.createNativeQuery("INSERT INTO contactos (id_perfil, id_perfil_liked) VALUES (?, ?)")
         .setParameter(1, id_perfil)
         .setParameter(2, id_perfilLike);
+        
+        
     }
     
     @SuppressWarnings("unchecked")

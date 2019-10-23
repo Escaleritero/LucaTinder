@@ -33,6 +33,9 @@ public class ServiciosImpl  implements IServicios{
 		Perfil aux = prc.obtenerPerfil(perfil.getAlias());
 		if(aux == null) {
 			ipr.save(perfil);
+			System.out.println("--------------------------");
+			System.out.println(perfil);
+			System.out.println("--------------------------");
 			return perfil;
 		}else {
 			return null;
