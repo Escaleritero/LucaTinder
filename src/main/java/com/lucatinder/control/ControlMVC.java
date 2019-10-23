@@ -77,8 +77,8 @@ public class ControlMVC {
 	 * @param id_perfil_liked parametro del perfil que ha recibido un like del usuario
 	 * @return vuelve a retornar la pagina principal de la cual esta conectado el usuario
 	 */
-    @PostMapping("/like")
-    public String savelike(@RequestParam("id_perfil_dislike") int id_perfillike) {
+    @GetMapping("/like")
+    public String savelike(@RequestParam("id") int id_perfillike) {
         iservicios.saveLike(id_perfil, id_perfillike);
         System.out.println("id_perfil1= "+id_perfil+" id_perfil2: "+id_perfillike);
         return "redirect:/home";
@@ -93,11 +93,10 @@ public class ControlMVC {
 	 * @param id_perfil_dislike parametro del perfil que ha recibido un dislike del usuario
 	 * @return vuelve a retornar la pagina principal de la cual esta conectado el usuario
      */
-    @PostMapping("/disLike")
+    @GetMapping("/disLike")
     public String saveDislike(@RequestParam("id") int id_perfilDislike) {
         iservicios.saveDislike(id_perfil, id_perfilDislike);
-        System.out.println("id_perfil1= "+id_perfil+" id_perfil2: "+id_perfilDislike);
-        return "redirect:/mvc/profile/home";
+        return "redirect:/home";
     }
     
     
