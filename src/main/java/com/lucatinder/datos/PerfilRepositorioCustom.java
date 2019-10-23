@@ -25,7 +25,6 @@ public class PerfilRepositorioCustom {
 	
 	@SuppressWarnings("unchecked")
     public List<Perfil> getPerfilSelection(int id_perfil) {
-		
 /*
 		String hql ="FROM Perfil " + 
 					"WHERE Perfil.id != :id1 " + 
