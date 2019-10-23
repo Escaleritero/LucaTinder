@@ -25,8 +25,6 @@ public class PerfilRepositorioCustom {
 	
 	@SuppressWarnings("unchecked")
     public List<Perfil> getPerfilSelection(int id_perfil) {
-		
-/*
 		String hql ="FROM Perfil " + 
 					"WHERE Perfil.id != :id1 " + 
 						"AND Perfil.id NOT IN ( " + 
@@ -41,7 +39,7 @@ public class PerfilRepositorioCustom {
 									"ON Perfil.id = Descartes.id_perfil " + 
 								"WHERE Perfil.id = :id3)";
 	
-		
+		/*
 		String hql2 = "FROM Contactos " + 
 				"JOIN Perfil " + 
 				"ON Perfil.id = Contactos.id_perfil "+
