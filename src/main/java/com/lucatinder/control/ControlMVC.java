@@ -64,10 +64,10 @@ public class ControlMVC {
 	}
 	
 	@PostMapping("/login")
-	public String loginPerfil(@ModelAttribute String alias, Model model) {
-		Perfil perfil = iservicios.validarPerfil(alias);
-		logger.info("--ABRIR SESION");
-		
+	public String loginPerfil(Perfil p, Model model) {
+		logger.info("-------ABRIR SESION"+p.getAlias()+"----");		
+		Perfil perfil = iservicios.validarPerfil(p.getAlias());
+
 		if (perfil != null) {
 			this.id_perfil = perfil.getId();
 			this.perfilLogin = perfil;

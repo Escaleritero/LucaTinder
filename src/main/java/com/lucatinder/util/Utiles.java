@@ -66,6 +66,7 @@ public class Utiles {
 	 * @return retorna una lista de objetos de tipo Perfil.
 	 */
 	public Perfil perfilConverter(List<Object[]> listaSQL){
+		System.out.println("---- perfilConverter "+listaSQL);
 		Perfil perfil = null;
 		for (Object[] p : listaSQL) {
 			perfil = new Perfil(

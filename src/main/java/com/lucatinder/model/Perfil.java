@@ -110,5 +110,14 @@ public class Perfil {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Perfil [id=" + id + ", alias=" + alias + ", nombre=" + nombre + ", genero=" + genero + ", edad=" + edad
+				+ ", descripcion=" + descripcion + "]";
+	}
+	
+	
 	
 }
