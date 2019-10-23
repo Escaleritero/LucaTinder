@@ -23,9 +23,12 @@ public class ControlMVC {
 
 	private int id_perfil;
 	private Perfil perfilLogin;
-
+	
 	private static final Logger logger = LoggerFactory.getLogger(ControlMVC.class);
 
+	
+	
+	
 	@GetMapping("/")
 	public String inicio(Model model, @ModelAttribute("perfil") Perfil perfil) {
 		logger.info("--en INICIO");
@@ -51,61 +54,55 @@ public class ControlMVC {
 			return "redirect:/home";
 		}
 	}
-
 	@PostMapping("/login")
 	public String loginPerfil(Perfil p, Model model) {
-		logger.info("-------ABRIR SESION" + p.getAlias() + "----");
+		logger.info("-------ABRIR SESION"+p.getAlias()+"----");		
 		Perfil perfil = iservicios.validarPerfil(p.getAlias());
 
 		if (perfil != null) {
 			this.id_perfil = perfil.getId();
 			this.perfilLogin = perfil;
-
+			
 			return "redirect:/home";
 		} else {
 			return "redirect:/";
 		}
 	}
+	
 
 	/**
 	 * @autor Pedro Umpierrez
 	 * 
-	 *        Metodo para guardar el like que del perfil gustado por el usuario
-	 *        logeado
+	 * Metodo para guardar el like que del perfil gustado por el usuario logeado
 	 * 
-	 * @param id_perfil       parametro del perfil del usuario que ha dado like
-	 * @param id_perfil_liked parametro del perfil que ha recibido un like del
-	 *                        usuario
-	 * @return vuelve a retornar la pagina principal de la cual esta conectado el
-	 *         usuario
+	 * @param id_perfil parametro del perfil del usuario que ha dado like
+	 * @param id_perfil_liked parametro del perfil que ha recibido un like del usuario
+	 * @return vuelve a retornar la pagina principal de la cual esta conectado el usuario
 	 */
-	@PostMapping("/like")
-	public String savelike(@RequestParam("id_perfil_dislike") int id_perfillike) {
-		iservicios.saveLike(id_perfil, id_perfillike);
-		System.out.println("id_perfil1= " + id_perfil + " id_perfil2: " + id_perfillike);
-		return "redirect:/home";
-	}
+    @PostMapping("/like")
+    public String savelike(@RequestParam("id_perfil_dislike") int id_perfillike) {
+        iservicios.saveLike(id_perfil, id_perfillike);
+        System.out.println("id_perfil1= "+id_perfil+" id_perfil2: "+id_perfillike);
+        return "redirect:/home";
+    }
 
-	/**
-	 * @author Pedro Umpierrez
+    /**
+     * @author Pedro Umpierrez
+     * 
+     * Metodo para guardar el dislike que del perfil gustado por el usuario logeado
 	 * 
-	 *         Metodo para guardar el dislike que del perfil gustado por el usuario
-	 *         logeado
-	 * 
-	 * @param id_perfil         parametro del perfil del usuario que ha dado like
-	 * @param id_perfil_dislike parametro del perfil que ha recibido un dislike del
-	 *                          usuario
-	 * @return vuelve a retornar la pagina principal de la cual esta conectado el
-	 *         usuario
-	 */
-
-	@PostMapping("/disLike")
-	public String saveDislike(@RequestParam("id") int id_perfilDislike) {
-		iservicios.saveDislike(id_perfil, id_perfilDislike);
-		System.out.println("id_perfil1= " + id_perfil + " id_perfil2: " + id_perfilDislike);
-		return "redirect:/mvc/profile/home";
-	}
-
+	 * @param id_perfil parametro del perfil del usuario que ha dado like
+	 * @param id_perfil_dislike parametro del perfil que ha recibido un dislike del usuario
+	 * @return vuelve a retornar la pagina principal de la cual esta conectado el usuario
+     */
+    @PostMapping("/disLike")
+    public String saveDislike(@RequestParam("id") int id_perfilDislike) {
+        iservicios.saveDislike(id_perfil, id_perfilDislike);
+        System.out.println("id_perfil1= "+id_perfil+" id_perfil2: "+id_perfilDislike);
+        return "redirect:/mvc/profile/home";
+    }
+    
+    
 	@GetMapping("/home")
 	public String homePerfil(Model model) {
 		List<Perfil> listaPerfil = iservicios.listaPerfiles(id_perfil);
@@ -113,5 +110,4 @@ public class ControlMVC {
 		model.addAttribute("lista", listaPerfil);
 		return "principal";
 	}
-
 }

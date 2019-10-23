@@ -41,16 +41,6 @@ public class ControlREST {
 		logger.info("-- en HOME");
 		return iservicios.listaPerfiles(id_perfil);
 	}
-	
-	
-	/*@GetMapping("/home")
-	public String homePerfil(Model model) {
-		List<Perfil> listaPerfil = iservicios.listaPerfiles(id_perfil);
-		model.addAttribute("perfil", perfilLogin);
-		model.addAttribute("lista", listaPerfil);
-		return "principal";
-	}*/
-
 
 	@GetMapping("/login/rest/{alias}")
 	public Perfil loginPerfil(@PathVariable String alias) {
@@ -69,7 +59,7 @@ public class ControlREST {
 	 */
 	@PostMapping("/alta/rest")
 	Perfil addPerfil(@RequestBody Perfil perfil) {
-		logger.info("--esta es la primera linea de ADDPERFIL REST-ERROR EN PERFIL CONVERTER");
+		logger.info("--esta es la primera linea de ADDPERFIL REST");
 		return iservicios.addPerfil(perfil);
 	} // BORRAME: controlado - Ro ERROR ----PERFIL CONVERTER
 
@@ -94,16 +84,6 @@ public class ControlREST {
 		logger.info("--SAVEDISLIKE_REST");
 		iservicios.saveDislike(id_perfil, id_perfilDislike);
 	} // BORRAME:
-
-	/**
-	 * @author Ro
-	 * @param alias
-	 */
-	@GetMapping("/validarPerfil/rest/{alias}")
-	public void validarPerfilRest(@PathVariable String alias) {
-		logger.info("--VALIDARPERFIL_REST");
-		iservicios.validarPerfil(alias);
-	}
 
 	// ROCIO: para borrar o editar perfil por ID
 	// @PostMapping ("/listadoPerfiles/perfil/rest/{id_perfil}")
