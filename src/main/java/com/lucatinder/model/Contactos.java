@@ -13,7 +13,11 @@ public class Contactos {
 	@GeneratedValue
 	@Column (name = "id_contactos")
 	private int id_contacto;
+	
+	@Column (name = "id_perfil")
 	private int id_perfil;
+	
+	@Column (name = "id_perfil_like")
 	private int id_perfilLike;
 	
 	public Contactos(int id_contacto, int id_perfil, int id_perfilLike) {
