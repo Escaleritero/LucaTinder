@@ -20,11 +20,11 @@
 			<div align=center><img align=center class="collage" src="http://assets.stickpng.com/thumbs/585e4beacb11b227491c3399.png" width=300 height=300></div>
 			<br/>
 			<div align=center>
-				<p th:text="'Usuario: '+${perfil.alias}"></p>
-				<p th:text="'Nombre: '+${perfil.nombre}"></p>
-				<p th:text="'Edad: ' + ${perfil.edad}"></p>
-				<p th:text="'Genero: ' + ${perfil.genero}"></p>
-			
+				<p th:text="'Usuario:' + ${perfil.alias}"></p>
+				<p th:text="'Nombre:' + ${perfil.nombre}"></p>
+				<p th:text="'Edad:' + ${perfil.edad}"></p>
+				<p th:text="'Genero:' + ${perfil.genero}"></p>
+				
 				<div align=center id="botones">
 					<div id="dislike" align=left>
 						<a title="dislike" th:href="@{disLike(id = ${perfil.id})}">

@@ -4,6 +4,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 //import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -24,7 +25,6 @@ public class PerfilRepositorioCustom {
 	
 	@SuppressWarnings("unchecked")
     public List<Perfil> getPerfilSelection(int id_perfil) {
-		
 /*
 		String hql ="FROM Perfil " + 
 					"WHERE Perfil.id != :id1 " + 
@@ -86,22 +86,22 @@ public class PerfilRepositorioCustom {
 
     }
 	
+	@Transactional
     @SuppressWarnings("unchecked")
     public void saveLike(int id_perfil ,int id_perfilLike) {
         logger.info("--en SAVELIKE");
-        em.createNativeQuery("INSERT INTO contactos (id_perfil, id_perfil_liked) VALUES (?, ?)")
+        em.createNativeQuery("INSERT INTO contactos (id_perfil, id_perfil_like) VALUES (?, ?)")
         .setParameter(1, id_perfil)
-        .setParameter(2, id_perfilLike);
-        
-        
+        .setParameter(2, id_perfilLike).executeUpdate();
     }
     
+    @Transactional 
     @SuppressWarnings("unchecked")
     public void saveDislike(int id_perfil ,int id_perfilDislike) {
         logger.info("--en SAVEDISLIKE");
         em.createNativeQuery("INSERT INTO descartes (id_perfil, id_perfil_dislike) VALUES (?, ?)")
         .setParameter(1, id_perfil)
-        .setParameter(2, id_perfilDislike);
+        .setParameter(2, id_perfilDislike).executeUpdate();
     }
 
     /**

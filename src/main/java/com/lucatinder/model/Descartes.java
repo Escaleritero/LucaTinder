@@ -13,7 +13,9 @@ public class Descartes {
 	@GeneratedValue
 	@Column (name = "id_descartes")
 	private int id_descartes;
+	@Column (name = "id_perfil")
 	private int id_perfil;
+	@Column (name = "id_perfil_dislike")
 	private int id_perfilDislike;
 	
 	public Descartes(int id_descartes, int id_perfil, int id_perfilDislike) {
