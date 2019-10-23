@@ -16,3 +16,4 @@ public interface IServicios {
     public void saveLike (int id_perfil, int id_perfilLike);
 	public Perfil devuelvePorID(int id_perfil);
 }
+
