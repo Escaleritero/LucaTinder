@@ -2,7 +2,10 @@ package com.lucatinder.servicios;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.lucatinder.model.Perfil;
+
 
 public interface IServicios {
 	public void deletePerfil(int id_perfil);
@@ -11,4 +14,5 @@ public interface IServicios {
 	public Perfil validarPerfil(String alias);
 	public void saveDislike (int id_perfil, int id_perfilDislike);
     public void saveLike (int id_perfil, int id_perfilLike);
+	public Perfil devuelvePorID(int id_perfil);
 }

@@ -1,6 +1,7 @@
 package com.lucatinder.servicios;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,8 +30,8 @@ public class ServiciosImpl  implements IServicios{
 	 */
 	@Override
 	public Perfil addPerfil(Perfil perfil) {
-		perfil = prc.obtenerPerfil(perfil.getAlias());
-		if(perfil == null) {
+		Perfil aux = prc.obtenerPerfil(perfil.getAlias());
+		if(aux == null) {
 			ipr.save(perfil);
 			return perfil;
 		}else {
@@ -39,7 +40,6 @@ public class ServiciosImpl  implements IServicios{
 	}
 	/**
 	 * Metodo para validar el alias introducido por el usuario.
-	 * 
 	 * @param alias parametro de tipo String que recoger el alias introducido por el usuario
 	 * @return retorna un perfil o un null si da fallo.
 	 */
@@ -55,7 +55,6 @@ public class ServiciosImpl  implements IServicios{
 
     /**
      * @author Ro
-     * 
      * Metodo para pasar el dislike que ha dado el usuario a la capa datos
      * 
      * @param id_perfil parametro de tipo entero donde guarda el id del perfil conectado
@@ -88,18 +87,20 @@ public class ServiciosImpl  implements IServicios{
 	public List<Perfil> listaPerfiles(int id_perfil) {
 		List<Perfil> listaPerfil = new ArrayList();
 		listaPerfil = prc.getPerfilSelection(id_perfil);
-		
-		if(listaPerfil.size()>=20) {
-			return listaPerfil;
-		}else {
-			listaPerfil = new Utiles().obtenerLista();
-			
-			for (Perfil perfil : listaPerfil) {
-				ipr.save(perfil);
+
+			if(listaPerfil.size()>=3) {
+				return listaPerfil;
+			}else{
+				listaPerfil = new Utiles().obtenerLista();
+				
+				for (Perfil perfil : listaPerfil) {
+					ipr.save(perfil);
+				}
+				listaPerfil = prc.getPerfilSelection(id_perfil);
+				return listaPerfil;
 			}
-			listaPerfil = prc.getPerfilSelection(id_perfil);
-			return listaPerfil;
-		}
+		
+		
 	}
 
 	/**

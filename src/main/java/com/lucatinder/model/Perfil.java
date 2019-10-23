@@ -67,16 +67,7 @@ public class Perfil {
 		this.edad = edad;
 		this.descripcion = descripcion;
 	}
-	public Perfil(int id, String alias, String nombre, String descripcion, boolean genero, int edad) {
-		super();
-		this.id = id;
-		this.alias = alias;
-		this.nombre = nombre;
-		this.genero = genero;
-		this.edad = edad;
-		this.descripcion = descripcion;
-	}	
-	
+
 	public int getId() {
 		return id;
 	}
@@ -119,5 +110,14 @@ public class Perfil {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Perfil [id=" + id + ", alias=" + alias + ", nombre=" + nombre + ", genero=" + genero + ", edad=" + edad
+				+ ", descripcion=" + descripcion + "]";
+	}
+	
+	
 	
 }
