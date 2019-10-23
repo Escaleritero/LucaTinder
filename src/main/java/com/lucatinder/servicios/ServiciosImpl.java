@@ -87,18 +87,20 @@ public class ServiciosImpl  implements IServicios{
 	public List<Perfil> listaPerfiles(int id_perfil) {
 		List<Perfil> listaPerfil = new ArrayList();
 		listaPerfil = prc.getPerfilSelection(id_perfil);
-		
-		if(listaPerfil.size()>=20) {
-			return listaPerfil;
-		}else {
-			listaPerfil = new Utiles().obtenerLista();
-			
-			for (Perfil perfil : listaPerfil) {
-				ipr.save(perfil);
+
+			if(listaPerfil.size()>=3) {
+				return listaPerfil;
+			}else{
+				listaPerfil = new Utiles().obtenerLista();
+				
+				for (Perfil perfil : listaPerfil) {
+					ipr.save(perfil);
+				}
+				listaPerfil = prc.getPerfilSelection(id_perfil);
+				return listaPerfil;
 			}
-			listaPerfil = prc.getPerfilSelection(id_perfil);
-			return listaPerfil;
-		}
+		
+		
 	}
 
 	/**

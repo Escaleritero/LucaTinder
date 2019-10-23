@@ -1,6 +1,17 @@
 package com.lucatinder.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name ="contactos")
 public class Contactos {
+	@Id
+	@GeneratedValue
+	@Column (name = "id_contactos")
 	private int id_contacto;
 	private int id_perfil;
 	private int id_perfilLike;
@@ -30,6 +41,14 @@ public class Contactos {
 	public void setId_perfilLike(int id_perfilLike) {
 		this.id_perfilLike = id_perfilLike;
 	}
+
+	@Override
+	public String toString() {
+		return "Contactos [id_contacto=" + id_contacto + ", id_perfil=" + id_perfil + ", id_perfilLike=" + id_perfilLike
+				+ "]";
+	}
+	
+	
 	
 	
 }
