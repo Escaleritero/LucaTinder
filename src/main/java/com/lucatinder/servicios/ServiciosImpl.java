@@ -29,8 +29,8 @@ public class ServiciosImpl  implements IServicios{
 	 */
 	@Override
 	public Perfil addPerfil(Perfil perfil) {
-		perfil = prc.obtenerPerfil(perfil.getAlias());
-		if(perfil == null) {
+		Perfil aux = prc.obtenerPerfil(perfil.getAlias());
+		if(aux == null) {
 			ipr.save(perfil);
 			return perfil;
 		}else {
