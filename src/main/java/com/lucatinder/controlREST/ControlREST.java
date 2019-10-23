@@ -36,7 +36,17 @@ public class ControlREST {
 	IPerfilRepositorio perfilRepo;
 
 	private static final Logger logger = (Logger) LoggerFactory.getLogger(ControlREST.class);
-
+	private int id_perfil;
+	
+	
+	
+	
+	//@GetMapping("/home")
+    //public List<Perfil> getProfileSelection() throws Exception {
+        //logger.info("-- en HOME");
+       // return iservicios.(id_perfil);
+   // }
+	
 	/**
 	 * @author Ro
 	 * @param perfil
@@ -44,14 +54,14 @@ public class ControlREST {
 	 */
 	@PostMapping
 	ResponseEntity<?> addPerfil(@RequestBody Perfil perfil) {
-		logger.info("--esta es la primera linea de ADDPERFIL REST");
+		logger.info("--esta es la primera linea de ADDPERFIL REST-ERROR EN PERFIL CONVERTER");
 		Perfil result = iservicios.addPerfil(perfil);
 		URI location = ServletUriComponentsBuilder
 				.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(result.getId())
 				.toUri();
 		return ResponseEntity.created(location).build();
-	} // BORRAME: controlado - Ro
+	} // BORRAME: controlado - Ro ERROR EN: PERFIL CONVERTER
 
 	/**
 	 * @author Ro
@@ -60,9 +70,9 @@ public class ControlREST {
 	 */
 	@GetMapping ("/listadoPerfiles/rest/{id_perfil}") 
 	public List<Perfil> listaPerfiles (@PathVariable int id_perfil){
-		logger.info("--LISTA PERFILES_REST");
+		logger.info("--LISTA PERFILES_REST-FATAL ERROR 404");
 		return iservicios.listaPerfiles(id_perfil);	
-	}
+	} //BORRAME: FALLA 404. Rastrear.
 
 	/**
 	 * @author Ro
@@ -70,11 +80,15 @@ public class ControlREST {
 	 * @param id_perfilLike
 	 * Guarda contactados
 	 */
-	@PostMapping ("/saveLike/rest/{id_perfil, id_perfilLike}")
-	public void saveLikeRest (@PathVariable int id_perfil, int id_perfilLike) {
+	@PostMapping ("/saveLike/rest/{id_perfilLike}")
+	public void saveLikeRest (@PathVariable int id_perfilLike) {
 	logger.info("--SAVELIKE_REST");
 	iservicios.saveLike(id_perfil, id_perfilLike);
-	}
+	} // controlado
+	
+	 
+	
+	
 	
 	/**
 	 * @author Ro
@@ -86,7 +100,7 @@ public class ControlREST {
 	public void saveDislikeRest (@PathVariable int id_perfil, int id_perfilDislike) {
 		logger.info("--SAVEDISLIKE_REST");
 		iservicios.saveDislike(id_perfil, id_perfilDislike);
-	}
+	}//
 	/**
 	 * @author Ro
 	 * @param alias
