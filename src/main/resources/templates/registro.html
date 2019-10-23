@@ -11,14 +11,15 @@
 		</div>
 		<br/>
 		<div align=center>
-			<form class="formulario2" method="post" th:object="${perfil}" th:action="@{/addperfil}">  
+			<form class="formulario2" method="post" th:object="${perfil}" th:action="@{/registro}">  
 				<p align=left class="texto-intermedio">Datos de perfil</p>
 				<p align=center class="texto-bajo">Alias: <input th:field="*{alias}"type="text" name="alias" size="27" required="required" ></p>
 				<p align=center class="texto-bajo">Nombre completo: <input th:field="*{nombre}" type="text" name="nombre" size="40" required="required" ></p>
 				<p class="texto-bajo">
 					Sexo: 
+				
 					<input th:field="*{genero}" type="radio" name="isHombre" value="true" required="required" class="texto-bajo"> Hombre
-					<input th:field="*{genero}" type="radio" name="isHombre" value="false" required="required" class="texto-bajo"> Mujer
+					<input th:field="*{genero}" type="radio" name="isMujer" value="false" required="required" class="texto-bajo"> Mujer
 				</p>
 				<p align=center class="texto-bajo">
 					Edad : <input type="number" th:field="*{edad}" name="edad" size="15" required="required">

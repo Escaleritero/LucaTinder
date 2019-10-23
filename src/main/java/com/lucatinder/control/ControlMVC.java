@@ -32,20 +32,25 @@ public class ControlMVC {
 		return "index";
 	}
 
-	/**
-	 * @Ro
-	 * @param model
-	 * @return "registro"
-	 */
-
-	@GetMapping("/home")
-	public String homePerfil(Model model) {
-		List<Perfil> listaPerfil = iservicios.listaPerfiles(id_perfil);
-		model.addAttribute("perfil", perfilLogin);
-		model.addAttribute("lista", listaPerfil);
-		return "principal";
+	@GetMapping("/formulario") // alta
+	public String newPerfil(Model model) {
+		logger.info("--NEW");
+		model.addAttribute("perfil", new Perfil());
+		return "registro";
 	}
 
+	@PostMapping("/registro") // alta
+	public String addPerfil(@ModelAttribute Perfil perfil) {
+		logger.info("--ADD");
+		Perfil aux;
+		aux = iservicios.addPerfil(perfil);
+		if (aux == null) {
+			return "registro";
+		} else {
+			perfilLogin = aux;
+			return "redirect:/home";
+		}
+	}
 	@PostMapping("/login")
 	public String loginPerfil(Perfil p, Model model) {
 		logger.info("-------ABRIR SESION" + p.getAlias() + "----");
@@ -60,25 +65,7 @@ public class ControlMVC {
 			return "redirect:/";
 		}
 	}
-
-	@GetMapping("/formulario") // alta
-	public String newPerfil(Model model) {
-		logger.info("--NEW");
-		model.addAttribute("perfil", new Perfil());
-		return "registro";
-	}
 	
-	@PostMapping("/registro") // alta
-	public String addPerfil(@ModelAttribute Perfil perfil) {
-		logger.info("--ADD");
-		iservicios.addPerfil(perfil);
-		if (perfil == null) {
-			return "registro";
-		} else {
-			return "principal";
-		}
-	}
-
 	/**
 	 * @autor Pedro Umpierrez
 	 * 
