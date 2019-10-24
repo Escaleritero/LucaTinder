@@ -23,9 +23,32 @@ public class PerfilRepositorioCustom {
 	@PersistenceContext
 	EntityManager em;
 	
+	@Transactional
 	@SuppressWarnings("unchecked")
     public List<Perfil> getPerfilSelection(int id_perfil) {
-		String hql ="FROM Perfil " + 
+		u = new Utiles();
+		String hql = "SELECT P.* " +
+                "FROM perfiles P "+
+                "WHERE P.id_perfiles != ? " +
+                "AND P.id_perfiles NOT IN ( " +
+                "    SELECT C.id_perfil_like " +
+                "    FROM contactos C " +
+                "    JOIN perfiles P " +
+                "    ON P.id_perfiles = C.id_perfil " +
+                "    WHERE P.id_perfiles = ?) " +
+                "AND P.id_perfiles NOT IN ( " +
+                "    SELECT d.id_perfil_dislike " +
+                "    FROM descartes D " +
+                "    JOIN perfiles P " +
+                "    ON P.id_perfiles = D.id_perfil " +
+                "    WHERE P.id_perfiles = ?) ";
+		List<Object[]> lp = em.createNativeQuery(hql)
+                .setParameter(1, id_perfil)
+                .setParameter(2, id_perfil)
+                .setParameter(3, id_perfil)
+                .getResultList();
+                return u.convertirLista(lp);
+		/*String hql ="FROM Perfil " + 
 					"WHERE Perfil.id != :id1 " + 
 						"AND Perfil.id NOT IN ( " + 
 						"SELECT Contactos.id_perfilLike " + 
@@ -38,51 +61,18 @@ public class PerfilRepositorioCustom {
 									"JOIN Perfil " + 
 									"ON Perfil.id = Descartes.id_perfil " + 
 								"WHERE Perfil.id = :id3)";
-	
-		/*
-		String hql2 = "FROM Contactos " + 
-				"JOIN Perfil " + 
-				"ON Perfil.id = Contactos.id_perfil "+
-				"WHERE Perfil.id = :id2)";
-		logger.info("--Realizo consulta q2--- ");
-		Query q2 = em.createQuery(hql);
-		q2.setParameter("id2", id_perfil);
-		logger.info("----q2--- "+q2.getResultList().toString());
-		
-		
-		String hql3 = "FROM Descartes " + 
-				"JOIN Perfil " + 
-				"ON Perfil.id = Descartes.id_perfil " + 
-			"WHERE Perfil.id = :id3)";
-		Query q3 = em.createQuery(hql);
-		q3.setParameter("id3", id_perfil);
-		logger.info("----q3--- "+q3.getResultList().toString());		
-		
-		
-		logger.info("------------------------QUERY RAFA-   " + hql);
-		Query q = em.createQuery(hql);
-       
-        q.setParameter("id1", id_perfil);
-        q.setParameter("id2", id_perfil);
-        q.setParameter("id3", id_perfil);
-        logger.info("------------------------ 1");
-        */
-		
-		//Prueba
-
-		
-		// Realizamos una prueba basica
+		em.
 		logger.info("--------- Iniciando getPerfilSelection");
-		String hql ="FROM Perfil";
+		//String hql ="FROM Perfil";
 		Query q = em.createQuery(hql);
 		q.setMaxResults(10);
-        
         
         List<Perfil> p = q.getResultList();
         logger.info("------ LISTADO: "+p);
 
         return p;
-
+        */
+		
     }
 	
 	@Transactional
