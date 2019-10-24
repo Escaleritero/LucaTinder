@@ -5,13 +5,10 @@ import java.util.Optional;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.lucatinder.datos.IPerfilRepositorio;
 import com.lucatinder.datos.PerfilRepositorioCustom;
 import com.lucatinder.model.Perfil;
 import com.lucatinder.util.Utiles;
-
-import net.bytebuddy.asm.Advice.Return;
 
 @Service
 public class ServiciosImpl  implements IServicios{
@@ -23,6 +20,8 @@ public class ServiciosImpl  implements IServicios{
 	PerfilRepositorioCustom prc;
 	
 	/**
+	 * @author Rafael
+	 * 
 	 * Metodo que le pasa un objeto para mandarlo a la base de datos.
 	 * 
 	 * @param perfil: objeto de la clase Perfil
@@ -33,7 +32,10 @@ public class ServiciosImpl  implements IServicios{
 		Perfil aux = prc.obtenerPerfil(perfil.getAlias());
 		if(aux == null) {
 			ipr.save(perfil);
-			return perfil;
+			System.out.println("Hola");
+			aux = prc.obtenerPerfil(perfil.getAlias());
+			System.out.println("Hola");
+			return aux;
 		}else {
 			return null;
 		}
@@ -53,6 +55,7 @@ public class ServiciosImpl  implements IServicios{
 		}
 	}
 
+	
     /**
      * @author Ro
      * Metodo para pasar el dislike que ha dado el usuario a la capa datos
@@ -77,6 +80,8 @@ public class ServiciosImpl  implements IServicios{
 	
 	
 	/**
+	 * @author Rafael
+	 * 
 	 * Metodo que recoge una lista de perfiles en caso de que no tenga 20 introducira 50 perfiles mas.
 	 * despues volvera a recoger la lista para retornarla a la pagina.
 	 * 
@@ -99,11 +104,11 @@ public class ServiciosImpl  implements IServicios{
 				listaPerfil = prc.getPerfilSelection(id_perfil);
 				return listaPerfil;
 			}
-		
-		
 	}
 
 	/**
+	 * @author Rafael
+	 * 
 	 * Metodo para eliminar la cuenta del perfil
 	 * 
 	 * @param id_perfil id que utlizaremos para elimar el perfil de la base de datos
@@ -112,14 +117,38 @@ public class ServiciosImpl  implements IServicios{
 	public void deletePerfil(int id_perfil) {
 		ipr.deleteById(id_perfil);
 	}
-	@Override
-	public Perfil devuelvePorID(int id_perfil) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	}
 
+
+	public Perfil devuelvePorID(int id_perfil) {
+		Optional<Perfil> perfil=ipr.findById(id_perfil);
+		return perfil.get();
+	}
 	
+	/**
+	 * @author Rafael
+	 * 
+	 * Metodo que recibe el id del usuario conectado y se lo pasa a la capa datos para que le devuelva una lista
+	 * de los perfiles que ha dado el usuario like anteriormente
+	 * 
+	 * @param id_perfil parametro de tipo entero que contiene el id del usuario conectado
+	 * @return retorna una lista de perfiles a los que el usuario ha dado like
+	 */
+	@Override
+	public List<Perfil> listaContactos(int id_perfil) {
+		return prc.listadoContactos(id_perfil);
+	}
 	
+	/**
+	 * @author Rafael
+	 * 
+	 * Metodo que recibe el id del usuario conectado y se lo pasa a la capa datos para que le devuelva una lista
+	 * de los perfiles que ha dado el usuario dislike anteriormente
+	 * 
+	 * @param id_perfil parametro de tipo entero que contiene el id del usuario conectado
+	 * @return retorna una lista de perfiles a los que el usuario ha dado dislike
+	 */
+	@Override
+	public List<Perfil> listaDescartes(int id_perfil) {
+		return prc.listadoContactos(id_perfil);
+	}
 }
