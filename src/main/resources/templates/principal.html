@@ -1,43 +1,74 @@
 <!DOCTYPE html>
-<html lang=es xmlns:th="http://www.thymeleaf.org">
-	<head>
-	    <meta charset="UTF-8">
-	    <title>Web Luca TIC</title>
-	    <link rel="stylesheet" th:href="@{/css/estilo.css}">
-	</head>
-	<body id="main">
-		<div align=center id="barra-superior">
-			<h1 id="titulo">
-				Lucatinder
-				<img src="https://cdn.icon-icons.com/icons2/935/PNG/64/like-heart-outline-symbol_icon-icons.com_73226.png">
-			</h1>
-			<p class="texto-intermedio-blanco" align=right>
-				<span th:inline="text">[[${alias}]]</span>
-			</p>
-		</div>
-		<br />
-		<div id="ficha" th:each="perfil : ${lista}" >
-			<div align=center><img align=center class="collage" src="http://assets.stickpng.com/thumbs/585e4beacb11b227491c3399.png" width=300 height=300></div>
-			<br/>
-			<div align=center>
-				<p th:text="'Usuario:' + ${perfil.alias}"></p>
-				<p th:text="'Nombre:' + ${perfil.nombre}"></p>
-				<p th:text="'Edad:' + ${perfil.edad}"></p>
-				<p th:text="'Genero:' + ${perfil.genero}"></p>
-				
-				<div align=center id="botones">
-					<div id="dislike" align=left>
-						<a title="dislike" th:href="@{disLike(id = ${perfil.id})}">
-							<img width=90 height=90 src="https://www.freeiconspng.com/uploads/cancel-close-button-png-11.png" alt="cruz" />
-						</a>
-					</div>
-					<div id="like" align=right>
-						<a title="like" align=right th:href="@{like(id=${perfil.id})}">
-							<img width=90 height=90 src="https://greenlifeisgood.com/wp-content/uploads/2018/07/12936-green-heart.png" alt="corazon" />
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</body>
-</html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+    <link rel="stylesheet" th:href="@{css/estilos.css}">
+    <link rel="stylesheet" th:href="@{css/bootstrap.css}">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet">
+</head>
+
+<body style="background-color:#eae3dc">
+    <div class="titulo">
+        <img th:src="@{img/robot.png}" style="width: 130px">
+        <p style="margin-top: -30px">LucaTinder</p>
+    </div>
+
+
+<nav class="navbar navbar-expand-lg navbar-light "  >
+            <a class="navbar-brand " href="#">TU DECIDES!</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">MATCHS!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">CONTACTOS</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+
+    <div id="grilla">
+
+        <div class="col-md-6 text-center" style="margin: auto">
+            <div class="table-responsive-md">
+                <!--  <table id="listado" class="table"> -->
+
+
+
+
+       <div class= "container">
+                        <div class="row">
+                            <div class="col-sm" >
+                                <div th:each="perfil : ${lista}"class="card" style="float: left; width: 300px; heigth: 300px" align= "center">
+                                    <div class="card-body">
+                                        <img class="card-img-top" th:src="@{img/robotlucatinder.png}" alt="Card image" style="width: 150px">
+                                        <p th:text=${perfil.nombre} style="margin-top: 5px;margin-bottom: 5px"></p>
+                                        <p th:text=${perfil.edad} style="margin-top: 5px;margin-bottom: 5px"></p>
+
+
+                                        <a th:href="@{like(id = ${perfil.id})}" class="btn btn-primary" style="background-color:#4fa860;margin: 0px 3px 0px;border-color: #4fa860">♥</a>
+                                        <a href="" class="btn btn-primary" style="background-color:#272727;margin: 0px 3px 0px;border-color: #272727">+</a>
+                                        <a th:href="@{disLike(id = ${perfil.id})}" class="btn btn-primary" style="background-color:#d14545;margin: 0px 3px 0px">X</a>
+                                       </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                                                
+    
+
+                <!--</table> -->
+            </div>
+        </div>
+    </div>
+</body></html>

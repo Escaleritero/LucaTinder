@@ -1,35 +1,94 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-	    <meta charset="UTF-8">
-	    <title>Web Luca TIC</title>
-	    <!-- CSS -->
-		<link rel="stylesheet" 
-		th:href="@{/css/estilo.css}" />
-	</head>
+
+<head>
+<meta charset="UTF-8">
+<title>Web Luca TIC</title>
+<link rel="stylesheet" th:href="@{/css/estilos.css}">
+<link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+<link
+	href="https://fonts.googleapis.com/css?family=Pacifico&display=swap"
+	rel="stylesheet">
 	
-	<body id="main">
-		<div align=center id="barra-superior">
-		   <h1 id="titulo">  Lucatinder <img src="https://cdn.icon-icons.com/icons2/935/PNG/64/like-heart-outline-symbol_icon-icons.com_73226.png"></h1>
+<link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lobster+Two&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Allerta+Stencil&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Sirin+Stencil&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Stardos+Stencil&display=swap" rel="stylesheet">
+
+
+
+</head>
+
+<body style="background-color:#eae3dc" >
+     <div class="titulo">
+          <img th:src="@{/img/robot.png}" style="width: 145px">
+
+     <a><p style="margin-top: -30px">LucaTinder</p></a>
+     </div>
+   
+        
+   
+    <div class="container">
+        <div class="row">
+			<div class="col-md-5 mx-auto"  >
+				<div id="first">
+					<div class="myform form ">
+						<div class="logo mb-3">
+							<div class="col-md-12 text-center">
+								<h2>Iniciar sesión</h2>
+							</div>
+						</div>
+						<form th:action="@{/login}" method="post" name="principal"
+							th:object="${perfil}">
+							
+
+
+							<div class="form-group">
+								<input type="text" name="text" th:field="*{alias}"
+									class="form-control" placeholder="Ingrese Alias de usuario"
+									style="margin: auto">
+							</div>
+
+							<div class="col-md-12 text-center ">
+								<button type="submit"
+									class=" btn btn-block mybtn btn-primary tx-tfm">Entrar</button>
+							</div>
+
+							<!-- --------------------------------------- -->
+
+							<div class="form-group" style="margin-bottom: 40px">
+								<br>
+								<br>
+								<p class="text-center">¿No tienes una cuenta aún?</p>
+							</div>
+						</form>					
+
+					</div>
+				</div>
+				
+				
+				
+				<div id="second">
+					<div class="myform form">
+						<div class="logo mb-3">
+							<div class="col-md-12 text-center">
+								<form method="get" th:action="@{/formulario}">
+								<button type="submit" name="submit" value="Registro" class=" btn btn-block mybtn btn-primary tx-tfm">Registrarse</button>
+                                </form>
+							</div>
+							
+						</div>
+						
+						
+						
+
+						
+					</div>
+				</div>
+			</div>
 		</div>
-		<br/>
-	    
-	    <div align=center>
-		    <form class="formulario" th:action="@{/login}" method="post" name="principal" th:object="${perfil}" >  
-		        <p align=left class="texto-intermedio">Entrar</p>
-			    <p align=left class="texto-bajo" for="alias"> Alias: <input type="text" th:field="*{alias}" required="required"/></p> 
-			    <input type="submit" align=center class="boton-general" value="Iniciar-sesión"/>
-			    <br/>
-		    </form>
-		    
-	        <br/>
-	        
-	        <form class="formulario" method="get"  th:action="@{/formulario}">  
-	        	<p align=left class="texto-intermedio">¿No tienes cuenta?</p>
-		        <input type="submit" align=center class="boton-general" value="Registro"/>
-		        <br/>
-	        </form>
-		</div>
-	    
-	</body>
+	</div>
+
+</body>
 </html>

@@ -1,19 +1,19 @@
 package com.lucatinder.controlREST;
 
-import java.net.URI;
+
 import java.util.List;
 
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
+
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 import com.lucatinder.datos.IPerfilRepositorio;
 import com.lucatinder.model.Perfil;
 import com.lucatinder.servicios.IServicios;
@@ -21,8 +21,7 @@ import com.lucatinder.servicios.IServicios;
 import ch.qos.logback.classic.Logger;
 
 /**
- * Clase= ControlRest
- * 
+ * Clase = ControlREST
  * @author Ro
  */
 
@@ -35,13 +34,22 @@ public class ControlREST {
 	IPerfilRepositorio perfilRepo;
 	private int id_perfil;
 	private static final Logger logger = (Logger) LoggerFactory.getLogger(ControlREST.class);
-
+/**
+ * @return
+ * @throws Exception
+ * Devuelve lista de 20/50 perfiles iniciales
+ */
+	
 	@GetMapping("/home")
 	public List<Perfil> mostrarListaPerfiles() throws Exception {
 		logger.info("-- en HOME");
 		return iservicios.listaPerfiles(id_perfil);
 	}
-
+/**
+ * @param alias
+ * @return Perfil 
+ * Abre sesion
+ */
 	@GetMapping("/login/rest/{alias}")
 	public Perfil loginPerfil(@PathVariable String alias) {
 		logger.info("--Comprobar si existe perfil--");
@@ -50,40 +58,43 @@ public class ControlREST {
 			this.id_perfil = p.getId();
 		}
 		return p;
-	} // BORRAME: ERROR ---- 
+	}
 
 	/**
 	 * @author Ro
 	 * @param perfil
-	 * @return Objeto Perfil
+	 * @return Objeto Perfil 
+	 * Guarda objeto en tabla perfiles
 	 */
 	@PostMapping("/alta/rest")
 	Perfil addPerfil(@RequestBody Perfil perfil) {
-		logger.info("--esta es la primera linea de ADDPERFIL REST");
+		logger.info("--linea de ADDPERFIL REST");
 		return iservicios.addPerfil(perfil);
-	} // BORRAME: controlado - Ro ERROR ----PERFIL CONVERTER
+	} 
 
 	/**
 	 * @author Ro
 	 * @param id_perfil
-	 * @param id_perfilLike __ Guarda contactados
+	 * @param id_perfilLike 
+	 * Guarda el like en tabla contactados
 	 */
 	@GetMapping("/saveLike/rest/{id_perfilLike}")
 	public void saveLikeRest(@PathVariable int id_perfilLike) {
 		logger.info("--SAVELIKE_REST");
 		iservicios.saveLike(id_perfil, id_perfilLike);
-	} // BORRAME:
+	} 
 
 	/**
 	 * @author Ro
 	 * @param id_perfil
-	 * @param id_perfilDislike __ Guarda descartados
+	 * @param id_perfilDislike
+	 * Guarda el dislike en tabla descartados
 	 */
-	@PostMapping("/saveDislike/rest/{id_perfilDislike}")
+	@GetMapping("/saveDislike/rest/{id_perfilDislike}")
 	public void saveDislikeRest(@PathVariable int id_perfilDislike) {
 		logger.info("--SAVEDISLIKE_REST");
 		iservicios.saveDislike(id_perfil, id_perfilDislike);
-	} // BORRAME:
+	} 
 
 	// ROCIO: para borrar o editar perfil por ID
 	// @PostMapping ("/listadoPerfiles/perfil/rest/{id_perfil}")
