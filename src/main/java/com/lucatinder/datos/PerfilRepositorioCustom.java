@@ -99,6 +99,34 @@ public class PerfilRepositorioCustom {
 	
 	/**
 	 * @author Rafael
+	 * 
+	 * Metodo que al recibir el id del usuario conectado le devuelve una lista de los usuarios que ha dado dislike anteriormente
+	 * 
+	 * @param id_perfil parametro de tipo entero que utilizaremos como condicion en la consulta sql.
+	 * @return retorna una lista de perfiles con dislike.
+	 */
+	@Transactional
+    @SuppressWarnings("unchecked")
+	public List<Perfil> listadoDescartes(int id_perfil) {
+		u = new Utiles();
+		String hql = "SELECT P.* " +
+                "FROM perfiles P "+
+                "WHERE P.id_perfiles != ? " +
+                "AND P.id_perfiles IN ( " +
+                "    SELECT D.id_perfil_dislike " +
+                "    FROM descartes D " +
+                "    JOIN perfiles P " +
+                "    ON P.id_perfiles = D.id_perfil " +
+                "    WHERE P.id_perfiles = ?)";
+		List<Object[]> lp = em.createNativeQuery(hql)
+                .setParameter(1, id_perfil)
+                .setParameter(2, id_perfil)
+                .getResultList();
+                return u.convertirLista(lp);
+	}
+	
+	/**
+	 * @author Rafael
 	 * Metodo que al recibir dos id de perfiles diferentes se guardan en la tabla descartes
 	 *  
 	 * @param id_perfil parametro de tipo entero que guarda el id del usuario logeado
@@ -124,8 +152,10 @@ public class PerfilRepositorioCustom {
     public Perfil obtenerPerfil(String alias) {
     	Query q = em.createQuery("from Perfil where alias = :alias");
         q.setParameter("alias", alias);
+        System.out.println(alias);
         if(q.getResultList().size()>0) {
             Perfil p1 = (Perfil)q.getResultList().get(0);
+            p1.toString();
             return p1;
         }
         else {
