@@ -38,7 +38,6 @@ body{
 }
 
 
-
 .tabla{
     }
     
@@ -107,3 +106,7 @@ body{
 	opacity:0.2;
 }
 
+.nav-link {
+	font-size:20px;
+	color: black;
+}
