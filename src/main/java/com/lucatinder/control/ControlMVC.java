@@ -51,6 +51,7 @@ public class ControlMVC {
 			return "registro";
 		} else {
 			perfilLogin = aux;
+			id_perfil = aux.getId();
 			return "redirect:/home";
 		}
 	}

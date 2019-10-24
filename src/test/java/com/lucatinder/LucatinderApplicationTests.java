@@ -19,7 +19,7 @@ import com.lucatinder.servicios.IServicios;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class LucatinderTest {
+public class LucatinderApplicationTests {
 	private static final Logger logger = LoggerFactory.getLogger(ControlMVC.class);
 	
 	@Autowired
@@ -49,19 +49,19 @@ public class LucatinderTest {
 	 */
 	@Test
 	public void deletePerfil() {
-		Perfil p = new Perfil();
+		Perfil p = new Perfil("Antonio","Antonio Santos",true,29,"Hola lechones");
 		int cantidad1;
 		int cantidad2;
 		
 		cantidad1 = ipr.findAll().size();
 		logger.info("Usuario almacenados: "+cantidad1);
-		p = service.addPerfil(new Perfil("Antonio","Antonio Santos",true,29,"Hola lechones"));
+		p = service.addPerfil(p);
 		
 		cantidad2 = ipr.findAll().size();
 		logger.info("Usuario almacenados: "+cantidad2);
 		service.deletePerfil(p.getId());
 		
-		assertEquals(cantidad1-1, cantidad2);
+		assertEquals(cantidad1, cantidad2-1);
 		assertNull(ipr.findById(p.getId()).orElse(null));
 		
 	}
