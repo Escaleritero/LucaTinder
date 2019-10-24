@@ -82,4 +82,34 @@ public class LucatinderApplicationTests {
 		assertEquals(p1.getAlias(),p2.getAlias());
 		assertEquals("Rafa",p2.getAlias());
 	}
+	
+	/**
+	 * @author Ro
+	 * Prueba para verificar que funcione el alta de Perfil a la base de datos.
+	 */
+	@Test
+    public void testAddPerfil() {
+        logger.info("Prueba para comprobar que se ha añadido un perfil");
+        
+        int cantInicial = 0;
+        int cantFinal = 0;
+        Perfil p = new Perfil( 500, "Prueba1", "Pruebafalsa", true, 20, "prueba para probar");
+        
+        //cantidad de perfiles
+        cantInicial = ipr.findAll().size();
+        logger.info("Numero de perfiles iniciales: " + cantInicial);
+    
+        //agrego uno
+        logger.info("Creando Perfil");
+        service.addPerfil(p);
+    
+        ipr.delete(p);
+        //compruebo
+        cantFinal = ipr.findAll().size();
+        logger.info("Numero de perfiles finales: " + cantFinal);
+        
+        //compruebo que se ha agregado
+        assertEquals(cantFinal, cantInicial + 1);
+       
+    }
 }
