@@ -74,10 +74,10 @@ public class ControlREST {
 	 * @param id_perfilLike
 	 * Guarda contactados
 	 */
-	@PostMapping ("/saveLike/rest/{id_perfil, id_perfilLike}")
-	public void saveLikeRest (@PathVariable int id_perfil, int id_perfilLike) {
+	@PostMapping ("/saveLike/rest/{id_perfilLike}")
+	public void saveLikeRest (@PathVariable int id_perfilLike) {
 	logger.info("--SAVELIKE_REST");
-	iservicios.saveLike(id_perfil, id_perfilLike);
+	iservicios.saveLike(this.perfilSesion.getId(), id_perfilLike);
 	}
 	
 	/**
@@ -86,10 +86,10 @@ public class ControlREST {
 	 * @param id_perfilDislike
 	 * Guarda descartados
 	 */
-	@PostMapping ("/saveDislike/rest/{id_perfil, id_perfilDislike}")
-	public void saveDislikeRest (@PathVariable int id_perfil, int id_perfilDislike) {
+	@PostMapping ("/saveDislike/rest/{id_perfilDislike}")
+	public void saveDislikeRest (@PathVariable int id_perfilDislike) {
 		logger.info("--SAVEDISLIKE_REST");
-		iservicios.saveDislike(id_perfil, id_perfilDislike);
+		iservicios.saveDislike(this.perfilSesion.getId(), id_perfilDislike);
 	}
 	/**
 	 * @author Ro
@@ -119,7 +119,13 @@ public class ControlREST {
 	@GetMapping ("/get/likeados")
 	public List<Perfil> getlikeados() {
 		
-		return iservicios.listarLikeados(perfilSesion.getId());
+		return iservicios.listaContactos(perfilSesion.getId());
+	}
+	
+	@GetMapping ("/get/descartes")
+	public List<Perfil> getDescartados() {
+		
+		return iservicios.listaDescartes(perfilSesion.getId());
 	}
 	
 	
