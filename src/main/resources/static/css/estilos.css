@@ -68,7 +68,42 @@ body{
 	opacity:0.2;
 }
 
+*/
 
-.nav navbar navbar-expand-lg navbar-light {
-	text-align:center;
+.titulo{
+   color: #000000;
+    font-family: 'Cookie', cursive;
+    font-size: 110px;
+    font-weight: bold;
+   
+    margin-top: 10px;
+    
 }
+
+
+#btn-like {
+  opacity: 1;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+#btn-like:hover{
+	opacity:0.2;
+}
+
+#btn-dislike {
+  opacity: 1;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+#btn-dislike:hover{
+	opacity:0.2;
+}
+

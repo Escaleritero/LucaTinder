@@ -76,7 +76,7 @@ public class PerfilRepositorioCustom {
 		logger.info("--------- Iniciando getPerfilSelection");
 		String hql ="FROM Perfil";
 		Query q = em.createQuery(hql);
-		q.setMaxResults(15);
+		q.setMaxResults(16);
         
         
         List<Perfil> p = q.getResultList();
