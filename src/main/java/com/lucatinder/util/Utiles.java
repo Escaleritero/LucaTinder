@@ -38,4 +38,20 @@ public class Utiles {
 		return (int) (((randomNumber *= b) / 100)+a);
 
 	}
+	
+	public List<Perfil> convertirLista(List<Object[]> rq){
+		List<Perfil> listaPerfil = new ArrayList<>();
+		boolean genero;
+		
+		for (Object[] p : rq) {
+			int g = Integer.parseInt(p[3].toString());
+			if(g == 1) {
+				genero = true;
+			}else {
+				genero = false;
+			}
+			listaPerfil.add(new Perfil((int) p[0], (String) p[1], (String) p[2], genero, (int)p[4], (String) p[5]));
+        }
+		return listaPerfil;
+	}
 }
