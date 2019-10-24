@@ -35,6 +35,7 @@ public class ControlREST {
 	@Autowired
 	IPerfilRepositorio perfilRepo;
 
+	Perfil perfilSesion;
 	private static final Logger logger = (Logger) LoggerFactory.getLogger(ControlREST.class);
 
 	/**
@@ -97,6 +98,27 @@ public class ControlREST {
 		iservicios.validarPerfil(alias);
 	}
 	
+	@GetMapping ("/get/perfil/{id}")
+	public Perfil getPerfil(@PathVariable String id) {
+		return iservicios.devuelvePorID(Integer.parseInt(id));
+	}
+	
+	@GetMapping ("/get/sesion")
+	public Perfil getPerfil() {
+		return perfilSesion;
+	}
+	
+	@GetMapping ("/get/likeados")
+	public List<Perfil> getlikeados() {
+		
+		return iservicios.listaContactos(perfilSesion.getId());
+	}
+	
+	@GetMapping ("/get/descartes")
+	public List<Perfil> getDescartados() {
+		
+		return iservicios.listaDescartes(perfilSesion.getId());
+	}
 	
 	//ROCIO: para borrar o editar perfil por ID
 	//@PostMapping ("/listadoPerfiles/perfil/rest/{id_perfil}") 
