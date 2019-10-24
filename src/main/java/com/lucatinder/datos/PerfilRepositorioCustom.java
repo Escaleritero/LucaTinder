@@ -123,4 +123,14 @@ public class PerfilRepositorioCustom {
         	return null;
         }
     }
+    
+    
+    public List<Perfil> getLikeados(int id_perfil) {
+        logger.info("--en SAVEDISLIKE");
+        Query q = em.createNativeQuery("SELECT * FROM contactos WHERE id_perfil = :id_elector",Perfil.class);
+        q.setParameter("id_elector", id_perfil);
+       
+        return q.getResultList();
+        
+    }
 }

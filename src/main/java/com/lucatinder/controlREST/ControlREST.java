@@ -36,6 +36,8 @@ public class ControlREST {
 
 	@Autowired
 	IPerfilRepositorio perfilRepo;
+	
+	Perfil perfilSesion;
 
 	private static final Logger logger = (Logger) LoggerFactory.getLogger(ControlREST.class);
 
@@ -97,6 +99,27 @@ public class ControlREST {
 	public void validarPerfilRest (@PathVariable String alias) {
 		logger.info("--VALIDARPERFIL_REST");
 		iservicios.validarPerfil(alias);
+		perfilSesion = iservicios.validarPerfil(alias);
+		System.out.println("----------------------");
+		System.out.println(perfilSesion);
+		
+		
+	}
+	
+	@GetMapping ("/get/perfil/{id}")
+	public Perfil getPerfil(@PathVariable String id) {
+		return iservicios.devuelvePorID(Integer.parseInt(id));
+	}
+	
+	@GetMapping ("/get/sesion")
+	public Perfil getPerfil() {
+		return perfilSesion;
+	}
+	
+	@GetMapping ("/get/likeados")
+	public List<Perfil> getlikeados() {
+		
+		return iservicios.listarLikeados(perfilSesion.getId());
 	}
 	
 	

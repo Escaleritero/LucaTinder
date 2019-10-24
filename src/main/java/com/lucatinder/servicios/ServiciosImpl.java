@@ -112,5 +112,14 @@ public class ServiciosImpl  implements IServicios{
 	public void deletePerfil(int id_perfil) {
 		ipr.deleteById(id_perfil);
 	}
+	@Override
+	public Perfil devuelvePorID(int id_perfil) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	}
 
+	
+	
 }
