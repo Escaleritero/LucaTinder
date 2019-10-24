@@ -150,7 +150,7 @@ public class PerfilRepositorioCustom {
 	 */
     @SuppressWarnings("unchecked")
     public Perfil obtenerPerfil(String alias) {
-    	Query q = em.createQuery("from Perfil where alias = :alias");
+    	Query q = em.createQuery("from Perfil where alias like :alias");
         q.setParameter("alias", alias);
         System.out.println(alias);
         if(q.getResultList().size()>0) {
