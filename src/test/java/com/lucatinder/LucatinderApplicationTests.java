@@ -42,13 +42,14 @@ public class LucatinderApplicationTests {
 			System.out.println(perfil);
 		}
 	}
+	
 	/**
 	 * @author Rafael
 	 * 
 	 * Prueba para eliminar un perfil que hemos creado falso
 	 */
 	@Test
-	public void deletePerfil() {
+	public void pruebaDeletePerfil() {
 		Perfil p = new Perfil("Antonio","Antonio Santos",true,29,"Hola lechones");
 		int cantidad1;
 		int cantidad2;
@@ -64,5 +65,21 @@ public class LucatinderApplicationTests {
 		assertEquals(cantidad1, cantidad2-1);
 		assertNull(ipr.findById(p.getId()).orElse(null));
 		
+	}
+	
+	
+	/**
+	 * @author Hector
+	 * 
+	 * Metodo que prueba que obtienes un perfil ha traves de un id.
+	 */
+	@Test
+	public void pruebaObtenerPerfil() {
+		Perfil p1 = new Perfil("LucasTonson","Lucas Tonson",true,29,"leña al mono");
+		Perfil p2 = new Perfil();
+		
+		p2 = service.addPerfil(p1);
+		assertEquals(p1.getAlias(),p2.getAlias());
+		assertEquals("Rafa",p2.getAlias());
 	}
 }
