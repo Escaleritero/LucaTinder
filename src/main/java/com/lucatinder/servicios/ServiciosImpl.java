@@ -116,9 +116,10 @@ public class ServiciosImpl  implements IServicios{
 	}
 
 
-		public Perfil devuelvePorID(int id_perfil) {
+	public Perfil devuelvePorID(int id_perfil) {
 		Optional<Perfil> perfil=ipr.findById(id_perfil);
 		return perfil.get();
+	}
 	
 	/**
 	 * @author Rafael
@@ -131,6 +132,20 @@ public class ServiciosImpl  implements IServicios{
 	 */
 	@Override
 	public List<Perfil> listaContactos(int id_perfil) {
+		return prc.listadoContactos(id_perfil);
+	}
+	
+	/**
+	 * @author Rafael
+	 * 
+	 * Metodo que recibe el id del usuario conectado y se lo pasa a la capa datos para que le devuelva una lista
+	 * de los perfiles que ha dado el usuario dislike anteriormente
+	 * 
+	 * @param id_perfil parametro de tipo entero que contiene el id del usuario conectado
+	 * @return retorna una lista de perfiles a los que el usuario ha dado dislike
+	 */
+	@Override
+	public List<Perfil> listaDescartes(int id_perfil) {
 		return prc.listadoContactos(id_perfil);
 	}
 }
