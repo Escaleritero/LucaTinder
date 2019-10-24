@@ -11,6 +11,6 @@ public interface IServicios {
 	public Perfil validarPerfil(String alias);
 	public void saveDislike (int id_perfil, int id_perfilDislike);
     public void saveLike (int id_perfil, int id_perfilLike);
-
+    public List<Perfil>listaContactos(int id_perfil);
 
 }
