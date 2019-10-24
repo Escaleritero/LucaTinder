@@ -67,3 +67,8 @@ body{
 #btn-dislike:hover{
 	opacity:0.2;
 }
+
+
+.nav navbar navbar-expand-lg navbar-light {
+	text-align:center;
+}
