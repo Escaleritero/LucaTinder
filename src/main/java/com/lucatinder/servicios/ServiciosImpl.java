@@ -145,6 +145,6 @@ public class ServiciosImpl  implements IServicios{
 	 */
 	@Override
 	public List<Perfil> listaDescartes(int id_perfil) {
-		return prc.listadoContactos(id_perfil);
+		return prc.listadoDescartes(id_perfil);
 	}
 }
